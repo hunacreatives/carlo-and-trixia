@@ -26,36 +26,38 @@ const FAQS = [
 export default function FaqFooter() {
   return (
     <>
-      {/* ---- FAQ white card (node 191:154) ---- */}
-      <section
+      {/* ---- FAQ light area (node 191:154). Background is a standalone layer so the
+            forest above can extend further down before the torn-paper edge. ---- */}
+      <div
         id="faq"
-        className="absolute left-[-3px] top-[7931px] h-[913px] w-[1512px] bg-[#f6f5f1]"
-      >
-        <h2 className="absolute left-[753px] top-[8101px] w-[902px] -translate-x-1/2 -translate-y-1/2 text-center font-faq text-[100px] font-bold leading-none text-black">
-          Frequently Asked Questions
-        </h2>
-
-        <div className="absolute left-[302px] top-[8214px] w-[902px] text-center text-black">
-          {FAQS.map((f) => (
-            <div key={f.q} className="mb-8">
-              <p className="font-faq text-[70px] leading-[1.1]">{f.q}</p>
-              {f.a.map((line, i) => (
-                <p
-                  key={i}
-                  className="font-[family-name:var(--font-marcellus)] text-[20px] leading-[1.5]"
-                >
-                  {line}
-                </p>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
+        className="absolute left-[-9px] top-[8060px] h-[784px] w-[1530px] bg-[#ececec]"
+      />
+      <h2 className="absolute left-[753px] top-[8180px] w-[902px] -translate-x-1/2 -translate-y-1/2 text-center font-faq text-[100px] font-bold leading-none text-black">
+        Frequently Asked Questions
+      </h2>
+      <div className="absolute left-[302px] top-[8293px] w-[902px] text-center text-black">
+        {FAQS.map((f, idx) => (
+          <div key={f.q}>
+            <p className="font-faq text-[70px] leading-[1.1]">{f.q}</p>
+            {f.a.map((line, i) => (
+              <p
+                key={i}
+                className="font-[family-name:var(--font-marcellus)] text-[20px] leading-[1.5]"
+              >
+                {line}
+              </p>
+            ))}
+            {idx < FAQS.length - 1 && (
+              <img src="/images/faq-divider.png" alt="" aria-hidden className="mx-auto my-2 w-[459px] max-w-full" style={{ height: 40, objectFit: "cover", objectPosition: "center center" }} />
+            )}
+          </div>
+        ))}
+      </div>
 
       {/* ---- Footer: couple in boat (node 191:75) ---- */}
       <footer
         id="rsvp"
-        className="absolute left-[-3px] top-[8844px] h-[2029px] w-[1512px]"
+        className="absolute left-[-9px] top-[8844px] h-[2029px] w-[1530px]"
       >
         <img
           src="/images/footer-boat.png"
@@ -78,6 +80,17 @@ export default function FaqFooter() {
             alt=""
             aria-hidden
             className="absolute h-[133.12%] left-[-40.93%] max-w-none top-[-24.05%] w-[186.27%]"
+          />
+        </div>
+
+        {/* Lily flower arrangement (node 191:166) — overlaid across envelope + lace card */}
+        <div className="absolute overflow-hidden pointer-events-none" style={{ left: 290, top: 160, width: 600, height: 665, transformOrigin: "bottom center", animation: "flowerSway 5s ease-in-out infinite" }}>
+          <img
+            src="/images/footer-flower.png"
+            alt=""
+            aria-hidden
+            className="absolute max-w-none top-0"
+            style={{ left: "-155.81%", width: "255.81%", height: "126.45%" }}
           />
         </div>
 

@@ -28,26 +28,10 @@ const gcal = (text: string, start: string, end: string, location: string) =>
 
 export default function MobileLanding() {
   return (
-    <ScaledCanvas designWidth={MOBILE_W} designHeight={MOBILE_H} className="bg-cream">
+    <ScaledCanvas designWidth={MOBILE_W} designHeight={MOBILE_H} cropTop={873} className="bg-cream">
         {/* ---- Backgrounds ---- */}
         <img src="/images/bg-welcome-story.png" alt="" aria-hidden className="absolute left-[-1px] top-[1752px] h-[799px] w-[402px] object-cover" />
         <img src="/images/bg-details.png" alt="" aria-hidden className="absolute left-[-96px] top-[2552px] h-[2701px] w-[594px] object-cover" />
-
-        {/* ============ HERO ============ */}
-        <section id="home" className="absolute left-0 top-0 h-[873px] w-[402px]">
-          <video className="absolute inset-0 h-full w-full object-cover" autoPlay muted loop playsInline poster="/images/hero-poster.jpg">
-            <source src="/video/hero.webm" type="video/webm" />
-            <source src="/video/hero.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-x-0 top-0 h-[90px] bg-gradient-to-b from-black/40 to-transparent" />
-          <Image src="/images/monogram.png" alt="Carlo & Trixia" width={46} height={46} className="absolute left-[178px] top-[8px]" priority />
-
-          <p className="absolute left-[51px] top-[294px] w-[221px] text-center font-script text-[78px] leading-none text-white [text-shadow:0px_-2px_6px_rgba(0,0,0,0.44)]">Carlo</p>
-          <p className="absolute left-[38px] top-[377px] w-[324px] text-center font-script text-[52px] leading-none text-white">&amp;</p>
-          <p className="absolute left-[131px] top-[441px] w-[222px] text-center font-script text-[78px] leading-none text-white [text-shadow:0px_-2px_6px_rgba(0,0,0,0.44)]">Trixia</p>
-          <p className="absolute left-[38px] top-[535px] w-[324px] text-center font-serif text-[13px] uppercase tracking-[0.5em] text-white">Are Getting Married</p>
-          <img src="/images/record.png" alt="" aria-hidden className="absolute left-[305px] top-[798px] h-[55px] w-[97px] object-contain" />
-        </section>
 
         {/* ============ WELCOME ============ */}
         <section className="absolute left-0 top-0 w-[402px] text-center text-white">
@@ -116,7 +100,7 @@ export default function MobileLanding() {
         </section>
 
         {/* ============ FAQ ============ */}
-        <section id="faq" className="absolute left-0 top-[5253px] h-[873px] w-[402px] bg-[#f6f5f1] text-center">
+        <section id="faq" className="absolute left-0 top-[5253px] h-[873px] w-[402px] bg-[#ececec] text-center">
           <h2 className="absolute left-[201px] top-[5500px] w-[360px] -translate-x-1/2 -translate-y-1/2 font-faq text-[44px] font-bold leading-none text-black">Frequently Asked Questions</h2>
           <div className="absolute left-[50px] top-[5540px] w-[302px] text-black">
             {[

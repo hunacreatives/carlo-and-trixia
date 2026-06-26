@@ -41,6 +41,152 @@ body {
   clip-path: inset(1px);
 }
 
+/* Drifting fog/mist — layered soft gradients that slowly travel across the
+   section in different directions for an organic rolling-mist effect. */
+.fog-mask {
+  /* Fully gradual fade from the centre outward — no flat region, so the container
+     has no perceptible edge anywhere */
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    #000 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    transparent 85%
+  );
+  mask-image: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    #000 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    transparent 85%
+  );
+}
+@keyframes fogDriftA {
+  0% {
+    transform: translate3d(-26%, 3%, 0) scale(1.1);
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(26%, -3%, 0) scale(1.35);
+    opacity: 0.55;
+  }
+}
+@keyframes fogDriftB {
+  0% {
+    transform: translate3d(24%, -4%, 0) scale(1.3);
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(-28%, 4%, 0) scale(1.1);
+    opacity: 0.45;
+  }
+}
+@keyframes fogDriftC {
+  0% {
+    transform: translate3d(-16%, -3%, 0) scale(1.35);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(20%, 3%, 0) scale(1.15);
+    opacity: 0.4;
+  }
+}
+.fog-layer {
+  position: absolute;
+  inset: -55% -50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  filter: blur(60px);
+}
+.fog-a {
+  background:
+    radial-gradient(16% 12% at 14% 14%, rgba(255, 255, 255, 0.55), transparent 65%),
+    radial-gradient(18% 11% at 42% 24%, rgba(255, 255, 255, 0.48), transparent 66%),
+    radial-gradient(15% 13% at 70% 16%, rgba(255, 255, 255, 0.5), transparent 65%),
+    radial-gradient(17% 12% at 88% 30%, rgba(255, 255, 255, 0.46), transparent 66%),
+    radial-gradient(16% 12% at 24% 46%, rgba(255, 255, 255, 0.5), transparent 65%),
+    radial-gradient(18% 11% at 78% 54%, rgba(255, 255, 255, 0.48), transparent 66%),
+    radial-gradient(15% 13% at 50% 74%, rgba(255, 255, 255, 0.46), transparent 65%),
+    radial-gradient(17% 12% at 86% 82%, rgba(255, 255, 255, 0.44), transparent 66%);
+  animation: fogDriftA 30s ease-in-out infinite alternate;
+}
+.fog-b {
+  background:
+    radial-gradient(18% 12% at 26% 20%, rgba(255, 255, 255, 0.46), transparent 66%),
+    radial-gradient(16% 13% at 58% 34%, rgba(255, 255, 255, 0.44), transparent 66%),
+    radial-gradient(17% 12% at 14% 60%, rgba(255, 255, 255, 0.46), transparent 66%),
+    radial-gradient(18% 11% at 64% 66%, rgba(255, 255, 255, 0.42), transparent 67%),
+    radial-gradient(16% 12% at 90% 44%, rgba(255, 255, 255, 0.44), transparent 66%),
+    radial-gradient(17% 13% at 38% 88%, rgba(255, 255, 255, 0.4), transparent 67%);
+  animation: fogDriftB 42s ease-in-out infinite alternate;
+}
+.fog-c {
+  background:
+    radial-gradient(20% 14% at 36% 12%, rgba(255, 255, 255, 0.4), transparent 67%),
+    radial-gradient(18% 13% at 72% 40%, rgba(255, 255, 255, 0.4), transparent 67%),
+    radial-gradient(16% 14% at 10% 36%, rgba(255, 255, 255, 0.38), transparent 68%),
+    radial-gradient(19% 12% at 52% 56%, rgba(255, 255, 255, 0.38), transparent 67%),
+    radial-gradient(17% 13% at 92% 70%, rgba(255, 255, 255, 0.36), transparent 68%);
+  animation: fogDriftC 52s ease-in-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fog-a,
+  .fog-b,
+  .fog-c {
+    animation: none;
+  }
+}
+
+/* Gentle breeze — a soft sway so flowers & lanterns feel alive. Several variants
+   (different durations/origins) so nothing moves in unison. */
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-2.5deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+@keyframes swaySoft {
+  0%,
+  100% {
+    transform: rotate(-1.8deg) translateY(0);
+  }
+  50% {
+    transform: rotate(2deg) translateY(-8px);
+  }
+}
+.breeze {
+  animation: sway 7s ease-in-out infinite;
+  transform-origin: top center;
+  will-change: transform;
+}
+.breeze-2 {
+  animation: swaySoft 9.5s ease-in-out infinite;
+  transform-origin: top center;
+  will-change: transform;
+}
+.breeze-3 {
+  animation: sway 11s ease-in-out infinite;
+  transform-origin: bottom center;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .breeze,
+  .breeze-2,
+  .breeze-3 {
+    animation: none;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -96,3 +242,154 @@ body {
     display: block;
   }
 }
+
+/* =============================================================
+   Animated Cumulus Clouds – Dress Code & Gifts region
+   Technique: radial-gradient puffs inside OVERSIZED divs.
+   Each div is the original cloud size + ~180-200px padding on every
+   side. All gradient puffs are remapped into this larger space so they
+   stay well clear of element edges — filter:blur() fades naturally
+   instead of hitting a hard rectangular clip.
+   ============================================================= */
+
+.cloud {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Small A — 980×470 — wide flat cloud shape */
+.cloud-a {
+  width: 980px;
+  height: 470px;
+  background:
+    radial-gradient(ellipse 224px 98px at 50% 68%, rgba(255,255,255,0.92), transparent 100%),
+    radial-gradient(ellipse 154px 84px at 30% 72%, rgba(255,255,255,0.86), transparent 100%),
+    radial-gradient(ellipse 154px 84px at 70% 70%, rgba(255,255,255,0.86), transparent 100%),
+    radial-gradient(ellipse 140px 91px at 40% 52%, rgba(255,255,255,0.84), transparent 100%),
+    radial-gradient(ellipse 168px 105px at 50% 44%, rgba(255,255,255,0.92), transparent 100%),
+    radial-gradient(ellipse 140px 91px at 60% 52%, rgba(255,255,255,0.84), transparent 100%),
+    radial-gradient(ellipse 112px 70px at 15% 70%, rgba(255,255,255,0.76), transparent 100%),
+    radial-gradient(ellipse 112px 70px at 85% 68%, rgba(255,255,255,0.76), transparent 100%);
+  filter: blur(16px);
+}
+
+/* Small B — 910×450 */
+.cloud-b {
+  width: 910px;
+  height: 450px;
+  background:
+    radial-gradient(ellipse 203px 91px at 50% 68%, rgba(255,255,255,0.92), transparent 100%),
+    radial-gradient(ellipse 140px 77px at 30% 72%, rgba(255,255,255,0.86), transparent 100%),
+    radial-gradient(ellipse 140px 77px at 70% 70%, rgba(255,255,255,0.86), transparent 100%),
+    radial-gradient(ellipse 126px 84px at 40% 52%, rgba(255,255,255,0.84), transparent 100%),
+    radial-gradient(ellipse 151px 95px at 50% 44%, rgba(255,255,255,0.92), transparent 100%),
+    radial-gradient(ellipse 126px 84px at 60% 52%, rgba(255,255,255,0.84), transparent 100%),
+    radial-gradient(ellipse 101px 64px at 15% 70%, rgba(255,255,255,0.76), transparent 100%),
+    radial-gradient(ellipse 101px 64px at 85% 68%, rgba(255,255,255,0.76), transparent 100%);
+  filter: blur(15px);
+}
+
+/* Medium C — 1400×560 */
+.cloud-c {
+  width: 1400px;
+  height: 560px;
+  background:
+    radial-gradient(ellipse 322px 133px at 50% 66%, rgba(255,255,255,0.92), transparent 100%),
+    radial-gradient(ellipse 224px 112px at 30% 70%, rgba(255,255,255,0.86), transparent 100%),
+    radial-gradient(ellipse 224px 112px at 70% 68%, rgba(255,255,255,0.86), transparent 100%),
+    radial-gradient(ellipse 202px 123px at 40% 51%, rgba(255,255,255,0.84), transparent 100%),
+    radial-gradient(ellipse 241px 140px at 50% 43%, rgba(255,255,255,0.92), transparent 100%),
+    radial-gradient(ellipse 202px 123px at 60% 51%, rgba(255,255,255,0.84), transparent 100%),
+    radial-gradient(ellipse 154px 90px at 14% 67%, rgba(255,255,255,0.76), transparent 100%),
+    radial-gradient(ellipse 154px 90px at 86% 65%, rgba(255,255,255,0.76), transparent 100%);
+  filter: blur(20px);
+}
+
+/* Large D — 1820×670 */
+.cloud-d {
+  width: 1820px;
+  height: 670px;
+  background:
+    radial-gradient(ellipse 406px 161px at 50% 65%, rgba(255,255,255,0.92), transparent 100%),
+    radial-gradient(ellipse 280px 133px at 30% 69%, rgba(255,255,255,0.88), transparent 100%),
+    radial-gradient(ellipse 280px 133px at 70% 67%, rgba(255,255,255,0.88), transparent 100%),
+    radial-gradient(ellipse 252px 151px at 40% 50%, rgba(255,255,255,0.85), transparent 100%),
+    radial-gradient(ellipse 305px 175px at 50% 42%, rgba(255,255,255,0.94), transparent 100%),
+    radial-gradient(ellipse 252px 151px at 60% 50%, rgba(255,255,255,0.85), transparent 100%),
+    radial-gradient(ellipse 196px 109px at 15% 65%, rgba(255,255,255,0.78), transparent 100%),
+    radial-gradient(ellipse 196px 109px at 85% 63%, rgba(255,255,255,0.78), transparent 100%),
+    radial-gradient(ellipse 182px 101px at 35% 58%, rgba(255,255,255,0.82), transparent 100%),
+    radial-gradient(ellipse 182px 101px at 65% 58%, rgba(255,255,255,0.82), transparent 100%);
+  filter: blur(24px);
+}
+
+/* Medium-wide E — 1540×590 */
+.cloud-e {
+  width: 1540px;
+  height: 590px;
+  background:
+    radial-gradient(ellipse 353px 143px at 50% 66%, rgba(255,255,255,0.92), transparent 100%),
+    radial-gradient(ellipse 245px 120px at 30% 70%, rgba(255,255,255,0.88), transparent 100%),
+    radial-gradient(ellipse 245px 120px at 70% 68%, rgba(255,255,255,0.88), transparent 100%),
+    radial-gradient(ellipse 221px 134px at 40% 51%, rgba(255,255,255,0.85), transparent 100%),
+    radial-gradient(ellipse 266px 154px at 50% 43%, rgba(255,255,255,0.94), transparent 100%),
+    radial-gradient(ellipse 221px 134px at 60% 51%, rgba(255,255,255,0.85), transparent 100%),
+    radial-gradient(ellipse 171px 98px at 14% 66%, rgba(255,255,255,0.78), transparent 100%),
+    radial-gradient(ellipse 171px 98px at 86% 64%, rgba(255,255,255,0.78), transparent 100%);
+  filter: blur(22px);
+}
+
+/* --- Drift keyframes (bigger movement, faster) --- */
+@keyframes cloudDriftR {
+  0%   { transform: translate(0px, 0px); }
+  45%  { transform: translate(55px, -18px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+@keyframes cloudDriftL {
+  0%   { transform: translate(0px, 0px); }
+  45%  { transform: translate(-65px, 15px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+@keyframes cloudBob {
+  0%   { transform: translate(0px, 0px); }
+  50%  { transform: translate(22px, -20px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+/* Faster durations + staggered negative delays */
+.cloud-r-slow { animation: cloudDriftR 22s ease-in-out infinite; }
+.cloud-r-med  { animation: cloudDriftR 15s ease-in-out infinite -6s; }
+.cloud-r-fast { animation: cloudDriftR 11s ease-in-out infinite -3s; }
+.cloud-l-slow { animation: cloudDriftL 24s ease-in-out infinite -10s; }
+.cloud-l-med  { animation: cloudDriftL 16s ease-in-out infinite -4s; }
+.cloud-l-fast { animation: cloudDriftL 12s ease-in-out infinite -8s; }
+.cloud-bob-1  { animation: cloudBob    19s ease-in-out infinite; }
+.cloud-bob-2  { animation: cloudBob    14s ease-in-out infinite -7s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud-r-slow, .cloud-r-med, .cloud-r-fast,
+  .cloud-l-slow, .cloud-l-med, .cloud-l-fast,
+  .cloud-bob-1, .cloud-bob-2 { animation: none; }
+}
+
+/* Flower sway — gentle alive motion anchored at the stem base */
+@keyframes flowerSway {
+  0%   { transform: rotate(0deg) translateY(0px); }
+  25%  { transform: rotate(1.2deg) translateY(-3px); }
+  50%  { transform: rotate(-0.8deg) translateY(-1px); }
+  75%  { transform: rotate(1deg) translateY(-4px); }
+  100% { transform: rotate(0deg) translateY(0px); }
+}
+
+.flower-sway {
+  transform-origin: bottom center;
+  animation: flowerSway 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flower-sway { animation: none; }
+}
+

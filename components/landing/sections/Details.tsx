@@ -33,7 +33,7 @@ function Button({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="absolute top-[5689px] flex h-[51px] items-center justify-center gap-2 rounded-[10px] bg-[#7d9176] font-serif text-[20px] text-white transition-opacity hover:opacity-90"
+      className="absolute top-[5719px] flex h-[51px] items-center justify-center gap-2 rounded-[10px] bg-[#7d9176] font-serif text-[20px] text-white transition-opacity hover:opacity-90"
       style={{ left: `${left}px`, width: `${width}px` }}
     >
       {withIcon && <img src={calIcon} alt="" className="h-5 w-5" />}
@@ -65,23 +65,18 @@ export default function Details() {
       <div className="absolute left-[754px] top-[4926px] h-[828px] w-px bg-[#73855e]/50" />
 
       {/* ---- Chapel / Ceremony card ---- */}
-      <Image
+      <img
         src="/images/venue-chapel.png"
         alt="Chapel of San Pedro Calungsod"
-        width={531}
-        height={389}
         className="absolute left-[117px] top-[4930px] h-[389px] w-[531px] rounded-[10px] object-cover"
       />
-      <div className="absolute left-[117px] top-[5367px] w-[531px] font-serif text-[#2e3e09]">
+      <div className="absolute left-[117px] top-[5367px] w-[531px] font-serif text-center text-[#2e3e09]">
         <p className="font-script text-[48.5px] leading-tight text-[#2e3e09]">The Wedding Day</p>
         <p className="text-[36px] leading-tight text-white">Ceremony</p>
         <p className="text-[36px] leading-tight text-white">2PM</p>
-        <p className="text-[36px] font-bold leading-tight text-white">
-          Chapel of San Pedro Calungsod
-        </p>
-        <p className="mt-4 text-[26px] leading-snug text-white">
-          Join us as we exchange vows and begin our forever surrounded by the love of
-          family and friends.
+        <p className="text-[36px] font-bold leading-tight text-white">Chapel of San Pedro Calungsod</p>
+        <p className="mt-5 text-[26px] leading-snug text-white">
+          Join us as we exchange vows and begin our forever surrounded by the love of family and friends.
         </p>
       </div>
       <Button href={maps("Chapel of San Pedro Calungsod Cebu")} label="Google Maps" left={145} width={210.872} />
@@ -100,23 +95,18 @@ export default function Details() {
       />
 
       {/* ---- Reception card ---- */}
-      <Image
+      <img
         src="/images/venue-bai.png"
         alt="Bai Hotel Cebu"
-        width={534}
-        height={389}
         className="absolute left-[854px] top-[4930px] h-[389px] w-[534px] rounded-[10px] object-cover"
       />
-      <div className="absolute left-[854px] top-[5369px] w-[535px] font-serif text-[#2e3e09]">
-        <p className="font-script text-[48.5px] leading-tight text-[#2e3e09]">
-          Cocktails &amp; Reception
-        </p>
+      <div className="absolute left-[854px] top-[5369px] w-[535px] font-serif text-center text-[#2e3e09]">
+        <p className="font-script text-[48.5px] leading-tight text-[#2e3e09]">Cocktails &amp; Reception</p>
         <p className="text-[36px] leading-tight text-white">Celebration</p>
         <p className="text-[36px] leading-tight text-white">4:00 PM onwards</p>
         <p className="text-[36px] font-bold leading-tight text-white">Bai Hotel Cebu</p>
-        <p className="mt-4 text-[26px] leading-snug text-white">
-          From heartfelt toasts to joyful moments on the dance floor, we look forward to
-          sharing this special occasion with you long into the night.
+        <p className="mt-5 text-[26px] leading-snug text-white">
+          From heartfelt toasts to joyful moments on the dance floor, we look forward to sharing this special occasion with you long into the night.
         </p>
       </div>
       <Button href={maps("Bai Hotel Cebu")} label="Google Maps" left={882} width={210.872} />

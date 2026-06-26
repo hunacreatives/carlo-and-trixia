@@ -22,14 +22,14 @@ export default function OurStory() {
       <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-heading h-[240px] justify-center leading-[0] left-[calc(14.29%+549px)] text-[#2e3e09] text-[160px] text-center top-[2680px] w-[862px]">
         <p className="leading-[normal]">Our Story</p>
       </div>
-      <div className="absolute h-[609px] left-[61px] top-[2107px] w-[426px]">
+      <div className="breeze absolute h-[609px] left-[61px] top-[2032px] w-[426px]">
         <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
           <img alt="" className="absolute h-[268.13%] left-[-0.06%] max-w-none top-0 w-[296.25%]" src={img21} />
         </div>
       </div>
-      <div className="absolute flex h-[609px] items-center justify-center left-[calc(71.43%-24px)] top-[2107px] w-[426px]">
+      <div className="absolute flex h-[609px] items-center justify-center left-[calc(71.43%-24px)] top-[2032px] w-[426px]">
         <div className="-scale-y-100 flex-none rotate-180">
-          <div className="h-[609px] relative w-[426px]">
+          <div className="breeze-2 h-[609px] relative w-[426px]">
             <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
               <img alt="" className="absolute h-[268.13%] left-[-0.06%] max-w-none top-0 w-[296.25%]" src={img21} />
             </div>
@@ -38,21 +38,21 @@ export default function OurStory() {
       </div>
       <div className="absolute flex h-[905.918px] items-center justify-center left-[calc(57.14%+27px)] top-[3200px] w-[1033.473px]">
         <div className="flex-none rotate-[-113.05deg]">
-          <div className="h-[859.914px] relative w-[618.62px]">
+          <div className="breeze-3 h-[859.914px] relative w-[618.62px]">
             <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
               <img alt="" className="absolute h-[182.82%] left-[-11.37%] max-w-none top-0 w-[196.43%]" src={img25} />
             </div>
           </div>
         </div>
       </div>
-      <div className="absolute h-[451px] left-[-295px] top-[2898px] w-[888px]">
+      <div className="breeze absolute h-[451px] left-[-295px] top-[2898px] w-[888px]">
         <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
           <img alt="" className="absolute h-[261.22%] left-[-5.37%] max-w-none top-[-6.92%] w-[102.62%]" src={img23} />
         </div>
       </div>
       <div className="absolute flex h-[1135px] items-center justify-center left-[-357px] top-[2921px] w-[949px]">
         <div className="-scale-y-100 flex-none rotate-180">
-          <div className="h-[1135px] relative w-[949px]">
+          <div className="breeze-3 h-[1135px] relative w-[949px]">
             <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
               <img alt="" className="absolute h-[111.02%] left-[-7.48%] max-w-none top-[-1.16%] w-[102.62%]" src={img23} />
             </div>
@@ -61,14 +61,14 @@ export default function OurStory() {
       </div>
       <div className="absolute flex h-[789.469px] items-center justify-center left-[calc(57.14%+3.73px)] top-[3324px] w-[855.962px]">
         <div className="flex-none rotate-[89.66deg]">
-          <div className="h-[851.298px] relative w-[784.406px]">
+          <div className="breeze-2 h-[851.298px] relative w-[784.406px]">
             <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
               <img alt="" className="absolute h-[234.16%] left-[-11.37%] max-w-none top-0 w-[196.43%]" src={img25} />
             </div>
           </div>
         </div>
       </div>
-      <div className="absolute h-[1174px] left-[calc(57.14%+27px)] top-[2860px] w-[927px]">
+      <div className="breeze-3 absolute h-[1174px] left-[calc(57.14%+27px)] top-[2860px] w-[927px]">
         <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
           <img alt="" className="absolute h-[110.89%] left-[-8.53%] max-w-none top-[-0.01%] w-[108.53%]" src={img23} />
         </div>
@@ -85,7 +85,7 @@ export default function OurStory() {
         </div>
         <div className="absolute flex h-[344.071px] items-center justify-center left-[calc(71.43%-40.48px)] top-[3023.38px] w-[288.925px]">
           <div className="flex-none rotate-[-9.06deg]">
-            <div className="h-[309.63px] relative shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-[243.19px]">
+            <div className="h-[309.63px] relative w-[243.19px]">
               <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
                 <img alt="" className="absolute h-[116.36%] left-[-125.56%] max-w-none top-[-8.64%] w-[263.51%]" src={img4} />
               </div>
@@ -103,7 +103,7 @@ export default function OurStory() {
         </div>
         <div className="absolute flex h-[438.758px] items-center justify-center left-[calc(71.43%+49.6px)] top-[2799.59px] w-[372.778px]">
           <div className="flex-none rotate-[9.93deg]">
-            <div className="h-[391.169px] relative shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-[309.972px]">
+            <div className="h-[391.169px] relative w-[309.972px]">
               <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
                 <img alt="" className="absolute h-[116.36%] left-[-17.78%] max-w-none top-[-8.64%] w-[261.19%]" src={img4} />
               </div>
@@ -168,7 +168,7 @@ export default function OurStory() {
         </div>
         <div className="absolute flex h-[504.797px] items-center justify-center left-[31.73px] top-[2832.78px] w-[428.886px]">
           <div className="-scale-y-100 flex-none rotate-[170.07deg]">
-            <div className="h-[450.045px] relative shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-[356.627px]">
+            <div className="h-[450.045px] relative w-[356.627px]">
               <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
                 <img alt="" className="absolute h-[116.36%] left-[-17.78%] max-w-none top-[-8.64%] w-[261.19%]" src={img4} />
               </div>
@@ -195,7 +195,7 @@ export default function OurStory() {
         </div>
         <div className="absolute flex h-[347.856px] items-center justify-center left-[147px] top-[3163px] w-[292.104px]">
           <div className="-scale-y-100 flex-none rotate-[-170.94deg]">
-            <div className="h-[313.037px] relative shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] w-[245.865px]">
+            <div className="h-[313.037px] relative w-[245.865px]">
               <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
                 <img alt="" className="absolute h-[116.36%] left-[-125.56%] max-w-none top-[-8.64%] w-[263.51%]" src={img4} />
               </div>
