@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import Image from "next/image";
+import ScaledCanvas from "../ScaledCanvas";
 import RsvpForm from "./RsvpForm";
 
+const RSVP_W = 1512;
 const RSVP_H = 1414;
 
 const NAV = [
@@ -16,11 +18,7 @@ const NAV = [
 
 export default function RsvpDesktop() {
   return (
-    <div
-      className="canvas-wrap canvas-desktop-wrap"
-      style={{ ["--desktop-h" as string]: RSVP_H }}
-    >
-      <div className="canvas canvas-desktop bg-black">
+    <ScaledCanvas designWidth={RSVP_W} designHeight={RSVP_H} className="bg-black">
         {/* Forest background (node 195:27) */}
         <img
           src="/images/rsvp-forest.png"
@@ -82,7 +80,6 @@ export default function RsvpDesktop() {
           aria-hidden
           className="absolute left-[1332px] top-[865px] h-[95px] w-[168px] object-contain"
         />
-      </div>
-    </div>
+    </ScaledCanvas>
   );
 }

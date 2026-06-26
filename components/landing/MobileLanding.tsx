@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import Image from "next/image";
+import ScaledCanvas from "../ScaledCanvas";
 import MobileCountdown from "./MobileCountdown";
 
 // Figma mobile frame: 402 x 6983 (node 189:1322)
+const MOBILE_W = 402;
 const MOBILE_H = 6983;
 
 function MapBtn({ href, label, left, top, width }: { href: string; label: string; left: number; top: number; width: number }) {
@@ -26,8 +28,7 @@ const gcal = (text: string, start: string, end: string, location: string) =>
 
 export default function MobileLanding() {
   return (
-    <div className="canvas-wrap canvas-mobile-wrap" style={{ ["--mobile-h" as string]: MOBILE_H }}>
-      <div className="canvas canvas-mobile bg-cream">
+    <ScaledCanvas designWidth={MOBILE_W} designHeight={MOBILE_H} className="bg-cream">
         {/* ---- Backgrounds ---- */}
         <img src="/images/bg-welcome-story.png" alt="" aria-hidden className="absolute left-[-1px] top-[1752px] h-[799px] w-[402px] object-cover" />
         <img src="/images/bg-details.png" alt="" aria-hidden className="absolute left-[-96px] top-[2552px] h-[2701px] w-[594px] object-cover" />
@@ -140,7 +141,6 @@ export default function MobileLanding() {
           </div>
           <Link href="/rsvp" className="absolute left-[188px] top-[190px] flex h-[35px] w-[84px] rotate-[7deg] items-center justify-center rounded-[8px] bg-[#7d9176] font-serif text-[14px] text-white">RSVP</Link>
         </footer>
-      </div>
-    </div>
+    </ScaledCanvas>
   );
 }

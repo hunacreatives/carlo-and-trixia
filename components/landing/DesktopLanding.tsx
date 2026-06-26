@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import ScaledCanvas from "../ScaledCanvas";
 import Hero from "./sections/Hero";
 import Welcome from "./sections/Welcome";
 import OurStory from "./sections/OurStory";
@@ -6,16 +7,13 @@ import Details from "./sections/Details";
 import DressCode from "./sections/DressCode";
 import FaqFooter from "./sections/FaqFooter";
 
-// Total Figma desktop canvas height (node 191:63)
+// Total Figma desktop canvas dimensions (node 191:63)
+const DESKTOP_W = 1512;
 const DESKTOP_H = 10873;
 
 export default function DesktopLanding() {
   return (
-    <div
-      className="canvas-wrap canvas-desktop-wrap"
-      style={{ ["--desktop-h" as string]: DESKTOP_H }}
-    >
-      <div className="canvas canvas-desktop bg-cream">
+    <ScaledCanvas designWidth={DESKTOP_W} designHeight={DESKTOP_H} className="bg-cream">
         {/* ---- Background layers (behind all content, at exact Figma coords) ---- */}
         <img
           src="/images/bg-welcome-story.png"
@@ -39,6 +37,20 @@ export default function DesktopLanding() {
           />
         </div>
 
+        {/* Flowing silk ribbon draped across the Our Story band (nodes 191:156 / 191:157) */}
+        <img
+          src="/images/story-silk.png"
+          alt=""
+          aria-hidden
+          className="absolute left-0 top-[2342px] h-[430px] w-[765px] object-cover"
+        />
+        <img
+          src="/images/story-silk.png"
+          alt=""
+          aria-hidden
+          className="absolute left-[764px] top-[2342px] h-[430px] w-[765px] object-cover"
+        />
+
         {/* ---- Content sections (top of stack) ---- */}
         <Hero />
         <Welcome />
@@ -46,7 +58,6 @@ export default function DesktopLanding() {
         <Details />
         <DressCode />
         <FaqFooter />
-      </div>
-    </div>
+    </ScaledCanvas>
   );
 }
