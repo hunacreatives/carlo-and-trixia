@@ -29,6 +29,15 @@ export default function DesktopLanding() {
           aria-hidden
           className="absolute left-0 top-[4017px] h-[3933px] w-[1512px] object-cover"
         />
+        {/* Large floral accent on the left (node 191:163) */}
+        <div className="absolute left-[-113px] top-[6663px] h-[1222px] w-[1043px] overflow-hidden pointer-events-none">
+          <img
+            src="/images/faq-floral.png"
+            alt=""
+            aria-hidden
+            className="absolute left-0 top-[-2.9%] h-[116.69%] w-full max-w-none"
+          />
+        </div>
 
         {/* ---- Content sections (top of stack) ---- */}
         <Hero />
