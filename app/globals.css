@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-script: var(--font-script);
+  --font-heading: var(--font-heading);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-faq: var(--font-faq);
+  --font-marcellus: var(--font-marcellus);
+
+  /* Brand palette pulled from the Figma design */
+  --color-ink: #1e1e1e;
+  --color-cream: #f4f3f1;
+  --color-sage: #6b7256;
+  --color-sage-deep: #4a513b;
+  --color-moss: #2f3527;
+}
+
+:root {
+  --background: #f4f3f1;
+  --foreground: #1e1e1e;
+  /* Figma design canvas widths */
+  --design-w: 1512;
+  --mobile-w: 402;
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/*
+  Pixel-exact scaling canvas.
+  The design is reproduced at its native Figma pixel dimensions inside `.canvas`,
+  then uniformly scaled so the design width always maps to the viewport width.
+  This keeps every element pixel-true at any screen size.
+*/
+.canvas-wrap {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+
+/* Desktop canvas: 1512px wide design */
+.canvas-desktop-wrap {
+  height: calc(var(--desktop-h) / var(--design-w) * 100vw);
+}
+.canvas-desktop {
+  width: calc(var(--design-w) * 1px);
+  height: calc(var(--desktop-h) * 1px);
+  transform: scale(calc(100vw / var(--design-w)));
+}
+
+/* Mobile canvas: 402px wide design */
+.canvas-mobile-wrap {
+  height: calc(var(--mobile-h) / var(--mobile-w) * 100vw);
+}
+.canvas-mobile {
+  width: calc(var(--mobile-w) * 1px);
+  height: calc(var(--mobile-h) * 1px);
+  transform: scale(calc(100vw / var(--mobile-w)));
+}
+
+/* Show desktop canvas by default, mobile below 768px */
+.show-mobile {
+  display: none;
+}
+@media (max-width: 767px) {
+  .show-desktop {
+    display: none;
+  }
+  .show-mobile {
+    display: block;
+  }
+}

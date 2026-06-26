@@ -1,0 +1,94 @@
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
+
+const FAQS = [
+  {
+    q: "By when should I respond?",
+    a: [
+      "Kindly send your response by September 30, 2026.",
+      "This helps us finalize seating and catering, so we'd be so grateful for an early reply.",
+    ],
+  },
+  {
+    q: "Can I bring my kids or a plus?",
+    a: [
+      "Plus-ones are by invitation only. Please check your invitation, if a guest is included, their name will be listed alongside yours. While we adore your little ones, we've planned an adults-focused celebration. Children who are named on the invitation are warmly welcome.",
+    ],
+  },
+  {
+    q: "Who can I contact if I have questions?",
+    a: [
+      "Feel free to message Trixia or Don Carlo on Messenger anytime, we're happy to help.",
+    ],
+  },
+];
+
+export default function FaqFooter() {
+  return (
+    <>
+      {/* ---- FAQ white card (node 191:154) ---- */}
+      <section
+        id="faq"
+        className="absolute left-[-3px] top-[7931px] h-[913px] w-[1512px] bg-[#f6f5f1]"
+      >
+        <h2 className="absolute left-[753px] top-[8101px] w-[902px] -translate-x-1/2 -translate-y-1/2 text-center font-faq text-[100px] font-bold leading-none text-black">
+          Frequently Asked Questions
+        </h2>
+
+        <div className="absolute left-[302px] top-[8214px] w-[902px] text-center text-black">
+          {FAQS.map((f) => (
+            <div key={f.q} className="mb-8">
+              <p className="font-faq text-[70px] leading-[1.1]">{f.q}</p>
+              {f.a.map((line, i) => (
+                <p
+                  key={i}
+                  className="font-[family-name:var(--font-marcellus)] text-[20px] leading-[1.5]"
+                >
+                  {line}
+                </p>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ---- Footer: couple in boat (node 191:75) ---- */}
+      <footer
+        id="rsvp"
+        className="absolute left-[-3px] top-[8844px] h-[2029px] w-[1512px]"
+      >
+        <img
+          src="/images/footer-boat.png"
+          alt="Carlo and Trixia in a boat on the lake"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+
+        {/* Envelope with lilies (node 191:76) — positioned over the lake */}
+        <img
+          src="/images/footer-envelope.png"
+          alt=""
+          aria-hidden
+          className="absolute left-[56px] top-[74px] h-[744px] w-[932px] object-contain"
+        />
+
+        {/* Lace "Kindly Respond" card (node 191:165) */}
+        <div className="absolute left-[603px] top-[235px] h-[693px] w-[881px] overflow-hidden">
+          <img
+            src="/images/footer-card.png"
+            alt=""
+            aria-hidden
+            className="absolute h-[133.12%] left-[-40.93%] max-w-none top-[-24.05%] w-[186.27%]"
+          />
+        </div>
+
+        {/* RSVP button (node 191:167) — overlaid on the lace card */}
+        <Link
+          href="/rsvp"
+          className="absolute left-[925px] top-[654px] flex h-[59px] w-[197px] rotate-[7.41deg] items-center justify-center rounded-[10px] bg-[#7d9176] font-serif text-[30px] text-white transition-opacity hover:opacity-90"
+        >
+          RSVP
+        </Link>
+      </footer>
+    </>
+  );
+}
