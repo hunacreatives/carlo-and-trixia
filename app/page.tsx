@@ -1,4 +1,5 @@
 import DesktopLanding from "@/components/landing/DesktopLanding";
+import MobileLanding from "@/components/landing/MobileLanding";
 
 export default function Home() {
   return (
@@ -7,8 +8,7 @@ export default function Home() {
         <DesktopLanding />
       </div>
       <div className="show-mobile">
-        {/* Mobile canvas (402px Figma frame) is built next; desktop shown as fallback for now */}
-        <DesktopLanding />
+        <MobileLanding />
       </div>
     </main>
   );

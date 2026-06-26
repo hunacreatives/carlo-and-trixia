@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import RsvpDesktop from "@/components/rsvp/RsvpDesktop";
+import MobileRsvp from "@/components/rsvp/MobileRsvp";
 
 export const metadata: Metadata = {
   title: "RSVP — Carlo & Trixia",
@@ -13,8 +14,7 @@ export default function RsvpPage() {
         <RsvpDesktop />
       </div>
       <div className="show-mobile">
-        {/* Mobile RSVP canvas built next */}
-        <RsvpDesktop />
+        <MobileRsvp />
       </div>
     </main>
   );
