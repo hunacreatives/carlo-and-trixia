@@ -31,6 +31,16 @@ body {
   font-family: var(--font-serif), Georgia, serif;
 }
 
+/*
+  Removes the faint anti-aliased seam that appears along the edge of rotated,
+  clipped image containers (the Our Story polaroids/florals). Insetting the clip
+  by a sub-pixel pushes its anti-aliased edge onto image content instead of the
+  cream background, so no hairline shows.
+*/
+.clipfix {
+  clip-path: inset(1px);
+}
+
 * {
   box-sizing: border-box;
 }
