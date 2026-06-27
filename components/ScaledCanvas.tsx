@@ -74,7 +74,6 @@ export default function ScaledCanvas({
           height: designHeight,
           transformOrigin: "top left",
           transform: `scale(${state.scale})`,
-          willChange: "transform",
           backfaceVisibility: "hidden",
           WebkitBackfaceVisibility: "hidden",
         }}

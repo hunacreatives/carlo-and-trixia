@@ -63,50 +63,21 @@ body {
   );
 }
 @keyframes fogDriftA {
-  0% {
-    transform: translate3d(-26%, 3%, 0) scale(1.1);
-    opacity: 0.55;
-  }
-  50% {
-    opacity: 0.9;
-  }
-  100% {
-    transform: translate3d(26%, -3%, 0) scale(1.35);
-    opacity: 0.55;
-  }
+  0%   { transform: translate3d(-26%, 3%, 0); }
+  100% { transform: translate3d(26%, -3%, 0); }
 }
 @keyframes fogDriftB {
-  0% {
-    transform: translate3d(24%, -4%, 0) scale(1.3);
-    opacity: 0.45;
-  }
-  50% {
-    opacity: 0.85;
-  }
-  100% {
-    transform: translate3d(-28%, 4%, 0) scale(1.1);
-    opacity: 0.45;
-  }
+  0%   { transform: translate3d(24%, -4%, 0); }
+  100% { transform: translate3d(-28%, 4%, 0); }
 }
 @keyframes fogDriftC {
-  0% {
-    transform: translate3d(-16%, -3%, 0) scale(1.35);
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.75;
-  }
-  100% {
-    transform: translate3d(20%, 3%, 0) scale(1.15);
-    opacity: 0.4;
-  }
+  0%   { transform: translate3d(-16%, -3%, 0); }
+  100% { transform: translate3d(20%, 3%, 0); }
 }
 .fog-layer {
   position: absolute;
   inset: -55% -50%;
   pointer-events: none;
-  will-change: transform, opacity;
-  filter: blur(36px);
 }
 .fog-a {
   background:
@@ -301,7 +272,6 @@ html {
     radial-gradient(ellipse 140px 91px at 60% 52%, rgba(255,255,255,0.84), transparent 100%),
     radial-gradient(ellipse 112px 70px at 15% 70%, rgba(255,255,255,0.76), transparent 100%),
     radial-gradient(ellipse 112px 70px at 85% 68%, rgba(255,255,255,0.76), transparent 100%);
-  filter: blur(16px);
 }
 
 /* Small B — 910×450 */
@@ -317,7 +287,6 @@ html {
     radial-gradient(ellipse 126px 84px at 60% 52%, rgba(255,255,255,0.84), transparent 100%),
     radial-gradient(ellipse 101px 64px at 15% 70%, rgba(255,255,255,0.76), transparent 100%),
     radial-gradient(ellipse 101px 64px at 85% 68%, rgba(255,255,255,0.76), transparent 100%);
-  filter: blur(15px);
 }
 
 /* Medium C — 1400×560 */
@@ -333,7 +302,6 @@ html {
     radial-gradient(ellipse 202px 123px at 60% 51%, rgba(255,255,255,0.84), transparent 100%),
     radial-gradient(ellipse 154px 90px at 14% 67%, rgba(255,255,255,0.76), transparent 100%),
     radial-gradient(ellipse 154px 90px at 86% 65%, rgba(255,255,255,0.76), transparent 100%);
-  filter: blur(20px);
 }
 
 /* Large D — 1820×670 */
@@ -351,7 +319,6 @@ html {
     radial-gradient(ellipse 196px 109px at 85% 63%, rgba(255,255,255,0.78), transparent 100%),
     radial-gradient(ellipse 182px 101px at 35% 58%, rgba(255,255,255,0.82), transparent 100%),
     radial-gradient(ellipse 182px 101px at 65% 58%, rgba(255,255,255,0.82), transparent 100%);
-  filter: blur(24px);
 }
 
 /* Medium-wide E — 1540×590 */
@@ -367,7 +334,6 @@ html {
     radial-gradient(ellipse 221px 134px at 60% 51%, rgba(255,255,255,0.85), transparent 100%),
     radial-gradient(ellipse 171px 98px at 14% 66%, rgba(255,255,255,0.78), transparent 100%),
     radial-gradient(ellipse 171px 98px at 86% 64%, rgba(255,255,255,0.78), transparent 100%);
-  filter: blur(22px);
 }
 
 /* --- Drift keyframes (bigger movement, faster) --- */
