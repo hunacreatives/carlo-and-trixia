@@ -44,7 +44,7 @@ function Button({
 
 export default function Details() {
   return (
-    <section id="schedule" className="absolute left-0 top-0 w-[1512px] text-center">
+    <section className="absolute left-0 top-0 w-[1512px] text-center">
       {/* Live countdown */}
       <Countdown />
 

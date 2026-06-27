@@ -8,6 +8,7 @@ import {
   Marcellus,
 } from "next/font/google";
 import "./globals.css";
+import ConditionalMusicPlayer from "@/components/ConditionalMusicPlayer";
 
 const pinyon = Pinyon_Script({
   weight: "400",
@@ -73,7 +74,10 @@ export default function RootLayout({
       lang="en"
       className={`${pinyon.variable} ${ballet.variable} ${lusitana.variable} ${jost.variable} ${tangerine.variable} ${marcellus.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <ConditionalMusicPlayer />
+      </body>
     </html>
   );
 }

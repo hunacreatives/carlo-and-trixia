@@ -2,22 +2,12 @@
 
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
-/**
- * Renders a fixed-size design "canvas" (designWidth × designHeight, in px)
- * and uniformly scales it so its width always matches the wrapper width.
- * This keeps every absolutely-positioned element pixel-exact at any screen size.
- *
- * `cropTop` removes that many design-px from the top of the canvas (used to drop
- * the hero region, which is rendered full-screen separately).
- *
- * The wrapper uses `aspect-ratio` so the correct height is reserved before JS
- * runs (no layout shift); JS only sets the numeric scale factor.
- */
 export default function ScaledCanvas({
   designWidth,
   designHeight,
   cropTop = 0,
   maxWidth,
+  bg = "#f4f3f1",
   className,
   children,
 }: {
@@ -25,6 +15,7 @@ export default function ScaledCanvas({
   designHeight: number;
   cropTop?: number;
   maxWidth?: number;
+  bg?: string;
   className?: string;
   children: ReactNode;
 }) {
@@ -56,8 +47,7 @@ export default function ScaledCanvas({
       style={{
         position: "relative",
         width: "100%",
-        backgroundColor: "#f4f3f1",
-        // CSS calc keeps height correct pre-JS when maxWidth is set
+        backgroundColor: bg,
         ...(maxWidth
           ? { height: `calc(${visibleHeight} * min(100vw, ${maxWidth}px) / ${designWidth})` }
           : { aspectRatio: `${designWidth} / ${visibleHeight}` }),

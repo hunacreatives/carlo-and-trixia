@@ -1,5 +1,8 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 const NAV = [
   { label: "Home", href: "#home" },
@@ -10,17 +13,28 @@ const NAV = [
   { label: "RSVP", href: "/rsvp" },
 ];
 
-/**
- * Full-viewport, full-bleed video hero. Sits outside the scaled design canvas so
- * the video always fills the screen edge-to-edge (no hairline borders) and the
- * section fits the viewport height.
- */
+function scrollToSection(href: string) {
+  if (href === "#home") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+  const el = document.getElementById(href.slice(1));
+  if (!el) return;
+  const rect = el.getBoundingClientRect();
+  window.scrollTo({ top: window.scrollY + rect.top, behavior: "smooth" });
+}
+
 export default function HeroFull() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const play = () => videoRef.current?.play().catch(() => {});
+    window.addEventListener("intro:opened", play, { once: true });
+    return () => window.removeEventListener("intro:opened", play);
+  }, []);
+
   return (
     <section id="home" className="relative h-[100svh] w-full overflow-hidden bg-black">
       <video
+        ref={videoRef}
         className="absolute inset-0 h-full w-full scale-[1.01] object-cover"
-        autoPlay
         muted
         loop
         playsInline
@@ -34,23 +48,40 @@ export default function HeroFull() {
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/55 to-transparent" />
 
       {/* Nav */}
-      <nav className="absolute inset-x-0 top-0 z-10 flex items-center justify-center px-6 py-5">
-        {/* Desktop menu (left group) */}
-        <div className="hidden flex-1 items-center justify-evenly md:flex">
+      <nav className="absolute inset-x-0 top-0 z-10 flex items-center justify-center gap-[100px] px-6 py-5">
+        <div className="hidden items-center gap-[100px] md:flex">
           {NAV.slice(0, 3).map((i) => (
-            <a key={i.label} href={i.href} className="font-sans text-[15px] font-light uppercase tracking-[0.12em] text-cream/90 transition-colors hover:text-white">
-              {i.label}
-            </a>
+            i.href.startsWith("#") ? (
+              <a
+                key={i.label} href={i.href}
+                className="font-sans text-[13px] font-light uppercase tracking-[0.12em] text-cream/90 transition-colors hover:text-white"
+                onClick={(e) => { e.preventDefault(); scrollToSection(i.href); }}
+              >
+                {i.label}
+              </a>
+            ) : (
+              <Link key={i.label} href={i.href} className="font-sans text-[13px] font-light uppercase tracking-[0.12em] text-cream/90 transition-colors hover:text-white">
+                {i.label}
+              </Link>
+            )
           ))}
         </div>
-        {/* Monogram */}
-        <Image src="/images/monogram.webp" alt="Carlo & Trixia monogram" width={447} height={447} className="mx-6 h-12 w-12 md:h-16 md:w-16" priority />
-        {/* Desktop menu (right group) */}
-        <div className="hidden flex-1 items-center justify-evenly md:flex">
+        <Image src="/images/monogram-v2.webp" alt="Carlo & Trixia monogram" width={447} height={447} className="h-24 w-24 md:h-28 md:w-28" priority />
+        <div className="hidden items-center gap-[100px] md:flex">
           {NAV.slice(3).map((i) => (
-            <a key={i.label} href={i.href} className="font-sans text-[15px] font-light uppercase tracking-[0.12em] text-cream/90 transition-colors hover:text-white">
-              {i.label}
-            </a>
+            i.href.startsWith("#") ? (
+              <a
+                key={i.label} href={i.href}
+                className="font-sans text-[13px] font-light uppercase tracking-[0.12em] text-cream/90 transition-colors hover:text-white"
+                onClick={(e) => { e.preventDefault(); scrollToSection(i.href); }}
+              >
+                {i.label}
+              </a>
+            ) : (
+              <Link key={i.label} href={i.href} className="font-sans text-[13px] font-light uppercase tracking-[0.12em] text-cream/90 transition-colors hover:text-white">
+                {i.label}
+              </Link>
+            )
           ))}
         </div>
       </nav>
@@ -64,9 +95,6 @@ export default function HeroFull() {
           Are Getting Married
         </p>
       </div>
-
-      {/* Vinyl record motif */}
-      <img src="/images/record.webp" alt="" aria-hidden className="absolute bottom-8 right-8 hidden h-14 w-24 object-contain md:block" />
     </section>
   );
 }

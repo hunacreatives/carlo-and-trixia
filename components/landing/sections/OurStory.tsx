@@ -13,7 +13,7 @@ const img26 = "/images/story-26.webp";
 
 export default function OurStory() {
   return (
-    <div id="our-story" className="contents">
+    <div className="contents">
       <div className="absolute h-[1759px] left-[266px] top-[2249px] w-[992px]">
         <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
           <img alt="" className="absolute h-[123.6%] left-[-34.71%] max-w-none top-[-10.7%] w-[169.51%]" src={img22} />

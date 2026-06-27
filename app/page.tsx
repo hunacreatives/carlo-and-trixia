@@ -1,10 +1,12 @@
 import HeroFull from "@/components/landing/HeroFull";
 import DesktopLanding from "@/components/landing/DesktopLanding";
 import MobileLanding from "@/components/landing/MobileLanding";
+import IntroLetter from "@/components/IntroLetter";
 
 export default function Home() {
   return (
     <main className="overflow-x-hidden max-w-full" style={{ overscrollBehaviorX: "none" }}>
+      <IntroLetter />
       <HeroFull />
       {/*
         Outer wrapper is full-width so section backgrounds bleed edge-to-edge.

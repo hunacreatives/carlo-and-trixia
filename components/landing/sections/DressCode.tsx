@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 export default function DressCode() {
   return (
-    <section id="dress-code" className="absolute left-0 top-0 w-[1512px]">
+    <section className="absolute left-0 top-0 w-[1512px]">
       {/* Dress code copy — heading, intro, color palette, then attire lists, all
           stacked in flow so nothing overlaps */}
       <div data-reveal className="absolute left-[117px] top-[5859px] w-[1272px] text-center font-serif text-[#2e3e09]">

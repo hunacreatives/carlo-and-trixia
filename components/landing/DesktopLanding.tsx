@@ -16,30 +16,15 @@ export default function DesktopLanding() {
     <ScaledCanvas designWidth={DESKTOP_W} designHeight={DESKTOP_H} cropTop={1006} maxWidth={1280} className="bg-cream page-enter">
         <ScrollReveal />
         {/* ---- Background layers (behind all content, at exact Figma coords) ---- */}
-        {/* Parchment-textured background for Welcome + Our Story region.
-            Noise filter is applied to a 400×400 tile and repeated via <pattern>
-            so the browser only rasterises 400×400 instead of 3200×3011. */}
-        <div
+        {/* Green textured background for Welcome + Our Story region */}
+        <img
+          src="/images/bg-welcome-story.webp"
+          alt=""
           aria-hidden
-          className="absolute overflow-hidden"
-          style={{ left: "-800px", width: "3200px", top: 1006, height: 3011, backgroundColor: "#b0b395" }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style={{ position: "absolute", inset: 0 }}>
-            <defs>
-              <filter id="pn" x="0%" y="0%" width="100%" height="100%">
-                <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-                <feColorMatrix type="saturate" values="0" />
-                <feComponentTransfer>
-                  <feFuncA type="linear" slope="0.35" />
-                </feComponentTransfer>
-              </filter>
-              <pattern id="pp" x="0" y="0" width="400" height="400" patternUnits="userSpaceOnUse">
-                <rect width="400" height="400" filter="url(#pn)" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#pp)" />
-          </svg>
-        </div>
+          decoding="async"
+          className="absolute top-[1006px] max-w-none"
+          style={{ left: "-800px", width: "3200px", height: "3011px" }}
+        />
         {/* Details misty-mountain backdrop */}
         <img
           src="/images/bg-details.webp"
@@ -115,6 +100,11 @@ export default function DesktopLanding() {
           className="absolute top-[7710px] h-[850px] max-w-none object-fill"
           style={{ left: "-800px", width: "3200px" }}
         />
+
+        {/* ---- Nav anchor targets at correct Figma y positions ---- */}
+        <div id="our-story"  className="absolute pointer-events-none" style={{ top: 2450,  left: 0, height: 0 }} />
+        <div id="schedule"   className="absolute pointer-events-none" style={{ top: 4017,  left: 0, height: 0 }} />
+        <div id="dress-code" className="absolute pointer-events-none" style={{ top: 5720,  left: 0, height: 0 }} />
 
         {/* ---- Content sections (top of stack) ---- */}
         <Welcome />

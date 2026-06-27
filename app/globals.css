@@ -186,10 +186,20 @@ body {
 /* ── Smooth scroll ─────────────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
+  background-color: #000;
 }
 
 * {
   box-sizing: border-box;
+}
+
+@keyframes recordSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes eqBar {
+  from { height: 3px; }
+  to   { height: var(--eq-max, 22px); }
 }
 
 /*
