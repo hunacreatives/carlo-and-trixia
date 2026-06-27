@@ -2,14 +2,14 @@
 // Pixel-exact reproduction of the Figma "Our Story" collage (node 191:180).
 // Absolute coordinates are page-absolute and resolve against the desktop canvas.
 
-const img22 = "/images/story-22.png";
-const img21 = "/images/story-21.png";
-const img25 = "/images/story-25.png";
-const img23 = "/images/story-23.png";
-const img6 = "/images/story-6.png";
-const img4 = "/images/story-4.png";
-const img24 = "/images/story-24.png";
-const img26 = "/images/story-26.png";
+const img22 = "/images/story-22.webp";
+const img21 = "/images/story-21.webp";
+const img25 = "/images/story-25.webp";
+const img23 = "/images/story-23.webp";
+const img6 = "/images/story-6.webp";
+const img4 = "/images/story-4.webp";
+const img24 = "/images/story-24.webp";
+const img26 = "/images/story-26.webp";
 
 export default function OurStory() {
   return (
@@ -19,10 +19,36 @@ export default function OurStory() {
           <img alt="" className="absolute h-[123.6%] left-[-34.71%] max-w-none top-[-10.7%] w-[169.51%]" src={img22} />
         </div>
       </div>
-      <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-heading h-[240px] justify-center leading-[0] left-[calc(14.29%+549px)] text-[#2e3e09] text-[160px] text-center top-[2680px] w-[862px]">
+
+      {/* Left-side ribbon mirrors — placed before img22 so they sit behind the column */}
+      <div className="absolute flex h-[905.918px] items-center justify-center top-[3200px] w-[1033.473px]" style={{ left: -512 }}>
+        <div className="flex-none rotate-[113.05deg]">
+          <div className="breeze-3 h-[859.914px] relative w-[618.62px]">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
+              <img alt="" className="absolute h-[182.82%] left-[-11.37%] max-w-none top-0 w-[196.43%]" src={img25} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute flex h-[789.469px] items-center justify-center top-[3324px] w-[855.962px]" style={{ left: -312 }}>
+        <div className="flex-none rotate-[-89.66deg]">
+          <div className="breeze-2 h-[851.298px] relative w-[784.406px]">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
+              <img alt="" className="absolute h-[234.16%] left-[-11.37%] max-w-none top-0 w-[196.43%]" src={img25} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="breeze-3 absolute h-[1174px] top-[2860px] w-[927px]" style={{ left: -407 }}>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
+          <img alt="" className="absolute h-[110.89%] left-[-8.53%] max-w-none top-[-0.01%] w-[108.53%]" src={img23} />
+        </div>
+      </div>
+
+      <div data-reveal className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-heading h-[240px] justify-center leading-[0] left-[calc(14.29%+549px)] text-[#2e3e09] text-[160px] text-center top-[2680px] w-[862px]">
         <p className="leading-[normal]">Our Story</p>
       </div>
-      <div className="breeze absolute h-[609px] left-[61px] top-[2032px] w-[426px]">
+      <div className="breeze absolute h-[609px] left-[160px] top-[2032px] w-[426px]">
         <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
           <img alt="" className="absolute h-[268.13%] left-[-0.06%] max-w-none top-0 w-[296.25%]" src={img21} />
         </div>
@@ -36,7 +62,7 @@ export default function OurStory() {
           </div>
         </div>
       </div>
-      <div className="absolute flex h-[905.918px] items-center justify-center left-[calc(57.14%+27px)] top-[3200px] w-[1033.473px]">
+      <div className="absolute flex h-[905.918px] items-center justify-center left-[calc(57.14%+127px)] top-[3200px] w-[1033.473px]">
         <div className="flex-none rotate-[-113.05deg]">
           <div className="breeze-3 h-[859.914px] relative w-[618.62px]">
             <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
@@ -45,21 +71,7 @@ export default function OurStory() {
           </div>
         </div>
       </div>
-      <div className="breeze absolute h-[451px] left-[-295px] top-[2898px] w-[888px]">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
-          <img alt="" className="absolute h-[261.22%] left-[-5.37%] max-w-none top-[-6.92%] w-[102.62%]" src={img23} />
-        </div>
-      </div>
-      <div className="absolute flex h-[1135px] items-center justify-center left-[-357px] top-[2921px] w-[949px]">
-        <div className="-scale-y-100 flex-none rotate-180">
-          <div className="breeze-3 h-[1135px] relative w-[949px]">
-            <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
-              <img alt="" className="absolute h-[111.02%] left-[-7.48%] max-w-none top-[-1.16%] w-[102.62%]" src={img23} />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="absolute flex h-[789.469px] items-center justify-center left-[calc(57.14%+3.73px)] top-[3324px] w-[855.962px]">
+      <div className="absolute flex h-[789.469px] items-center justify-center left-[calc(57.14%+103.73px)] top-[3324px] w-[855.962px]">
         <div className="flex-none rotate-[89.66deg]">
           <div className="breeze-2 h-[851.298px] relative w-[784.406px]">
             <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
@@ -68,7 +80,7 @@ export default function OurStory() {
           </div>
         </div>
       </div>
-      <div className="breeze-3 absolute h-[1174px] left-[calc(57.14%+27px)] top-[2860px] w-[927px]">
+      <div className="breeze-3 absolute h-[1174px] left-[calc(57.14%+127px)] top-[2860px] w-[927px]">
         <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
           <img alt="" className="absolute h-[110.89%] left-[-8.53%] max-w-none top-[-0.01%] w-[108.53%]" src={img23} />
         </div>
@@ -212,7 +224,7 @@ export default function OurStory() {
           </div>
         </div>
       </div>
-      <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-serif h-[740px] justify-center leading-[0] left-[calc(28.57%+324.5px)] text-[#2e3e09] text-center top-[3200px] w-[493px]">
+      <div data-reveal data-reveal-delay="100" className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-serif h-[740px] justify-center leading-[0] left-[calc(28.57%+324.5px)] text-[#2e3e09] text-center top-[3200px] w-[493px]">
         <p className="font-bold leading-[normal] mb-0 text-[30px]">{`Who would've thought a random food trip would lead to forever?`}</p>
         <p className="leading-[normal] mb-0 text-[30px]">&nbsp;</p>
         <p className="leading-[normal] mb-0 text-[30px]">{`Although Carlo and Trixia came from the same school in Palompon, Leyte, they didn't meet until 2019, when their friend invited Carlo to join a Binondo food trip at Wai Ying.`}</p>
@@ -295,6 +307,7 @@ export default function OurStory() {
           </div>
         </div>
       </div>
+
     </div>
   );
 }

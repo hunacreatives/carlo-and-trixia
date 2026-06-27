@@ -29,6 +29,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-serif), Georgia, serif;
+  overflow-x: hidden;
+  max-width: 100%;
+  overscroll-behavior-x: none;
 }
 
 /*
@@ -103,7 +106,7 @@ body {
   inset: -55% -50%;
   pointer-events: none;
   will-change: transform, opacity;
-  filter: blur(60px);
+  filter: blur(36px);
 }
 .fog-a {
   background:
@@ -143,6 +146,7 @@ body {
     animation: none;
   }
 }
+
 
 /* Gentle breeze — a soft sway so flowers & lanterns feel alive. Several variants
    (different durations/origins) so nothing moves in unison. */
@@ -185,6 +189,32 @@ body {
   .breeze-3 {
     animation: none;
   }
+}
+
+/* ── Scroll reveal ─────────────────────────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-reveal].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Page entrance ─────────────────────────────────────────────────────────── */
+@keyframes pageIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.page-enter {
+  animation: pageIn 1s ease forwards;
+}
+
+/* ── Smooth scroll ─────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
 }
 
 * {

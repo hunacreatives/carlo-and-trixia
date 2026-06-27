@@ -24,7 +24,7 @@ export default function HeroFull() {
         muted
         loop
         playsInline
-        poster="/images/hero-poster.jpg"
+        poster="/images/hero-poster.webp"
       >
         <source src="/video/hero.webm" type="video/webm" />
         <source src="/video/hero.mp4" type="video/mp4" />
@@ -44,7 +44,7 @@ export default function HeroFull() {
           ))}
         </div>
         {/* Monogram */}
-        <Image src="/images/monogram.png" alt="Carlo & Trixia monogram" width={447} height={447} className="mx-6 h-12 w-12 md:h-16 md:w-16" priority />
+        <Image src="/images/monogram.webp" alt="Carlo & Trixia monogram" width={447} height={447} className="mx-6 h-12 w-12 md:h-16 md:w-16" priority />
         {/* Desktop menu (right group) */}
         <div className="hidden flex-1 items-center justify-evenly md:flex">
           {NAV.slice(3).map((i) => (
@@ -66,7 +66,7 @@ export default function HeroFull() {
       </div>
 
       {/* Vinyl record motif */}
-      <img src="/images/record.png" alt="" aria-hidden className="absolute bottom-8 right-8 hidden h-14 w-24 object-contain md:block" />
+      <img src="/images/record.webp" alt="" aria-hidden className="absolute bottom-8 right-8 hidden h-14 w-24 object-contain md:block" />
     </section>
   );
 }

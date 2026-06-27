@@ -20,13 +20,13 @@ function getParts(): Parts {
 
 // Label centers (px) on the 1512 design canvas
 const COLS = [
-  { x: 597, key: "days", label: "DAYS" },
-  { x: 710.5, key: "hours", label: "HOURS" },
-  { x: 811.5, key: "minutes", label: "MINUTES" },
-  { x: 923.5, key: "seconds", label: "SECONDS" },
+  { x: 494, key: "days", label: "DAYS" },
+  { x: 669, key: "hours", label: "HOURS" },
+  { x: 844, key: "minutes", label: "MINUTES" },
+  { x: 1019, key: "seconds", label: "SECONDS" },
 ] as const;
 
-const COLONS = [664.95, 759.77, 866.21];
+const COLONS = [581, 756, 931];
 
 export default function Countdown() {
   const [parts, setParts] = useState<Parts | null>(null);
@@ -42,7 +42,7 @@ export default function Countdown() {
       {COLS.map((c) => (
         <p
           key={c.key}
-          className="absolute top-[4385px] w-[120px] -translate-x-1/2 -translate-y-1/2 text-center text-[70px] leading-none tabular-nums"
+          className="absolute top-[4385px] w-[150px] -translate-x-1/2 -translate-y-1/2 text-center text-[90px] leading-none tabular-nums"
           style={{ left: `${c.x}px` }}
         >
           {parts ? String(parts[c.key]).padStart(2, "0") : "––"}
@@ -51,7 +51,7 @@ export default function Countdown() {
       {COLONS.map((x, i) => (
         <p
           key={i}
-          className="absolute top-[4412px] w-[30px] -translate-x-1/2 -translate-y-full text-center text-[50px] leading-none"
+          className="absolute top-[4412px] w-[30px] -translate-x-1/2 -translate-y-full text-center text-[65px] leading-none"
           style={{ left: `${x}px` }}
         >
           :
@@ -60,7 +60,7 @@ export default function Countdown() {
       {COLS.map((c) => (
         <p
           key={c.label}
-          className="absolute top-[4439px] w-[95px] -translate-x-1/2 -translate-y-1/2 text-center text-[15px] leading-none tracking-[0.12em]"
+          className="absolute top-[4439px] w-[115px] -translate-x-1/2 -translate-y-1/2 text-center text-[20px] leading-none tracking-[0.12em]"
           style={{ left: `${c.x}px` }}
         >
           {c.label}

@@ -30,8 +30,8 @@ export default function MobileLanding() {
   return (
     <ScaledCanvas designWidth={MOBILE_W} designHeight={MOBILE_H} cropTop={873} className="bg-cream">
         {/* ---- Backgrounds ---- */}
-        <img src="/images/bg-welcome-story.png" alt="" aria-hidden className="absolute left-[-1px] top-[1752px] h-[799px] w-[402px] object-cover" />
-        <img src="/images/bg-details.png" alt="" aria-hidden className="absolute left-[-96px] top-[2552px] h-[2701px] w-[594px] object-cover" />
+        <img src="/images/bg-welcome-story.webp" alt="" aria-hidden className="absolute left-[-1px] top-[1752px] h-[799px] w-[402px] object-cover" />
+        <img src="/images/bg-details.webp" alt="" aria-hidden className="absolute left-[-96px] top-[2552px] h-[2701px] w-[594px] object-cover" />
 
         {/* ============ WELCOME ============ */}
         <section className="absolute left-0 top-0 w-[402px] text-center text-white">
@@ -46,16 +46,16 @@ export default function MobileLanding() {
         {/* ============ OUR STORY ============ */}
         <section id="our-story" className="absolute left-0 top-0 w-[402px] text-center">
           {/* Floral corners */}
-          <img src="/images/story-21.png" alt="" aria-hidden className="absolute left-[9px] top-[1752px] h-[236px] w-[165px] object-contain opacity-95" />
-          <img src="/images/story-21.png" alt="" aria-hidden className="absolute left-[391px] top-[1752px] h-[236px] w-[165px] -scale-x-100 object-contain opacity-95" />
+          <img src="/images/story-21.webp" alt="" aria-hidden className="absolute left-[9px] top-[1752px] h-[236px] w-[165px] object-contain opacity-95" />
+          <img src="/images/story-21.webp" alt="" aria-hidden className="absolute left-[391px] top-[1752px] h-[236px] w-[165px] -scale-x-100 object-contain opacity-95" />
           <h3 className="absolute left-[80px] top-[1998px] w-[242px] font-heading text-[40px] leading-none text-[#2e3e09]">Our Story</h3>
           {/* Photos */}
-          <Image src="/images/venue-chapel.png" alt="" width={210} height={224} aria-hidden className="absolute left-[20px] top-[2120px] h-[150px] w-[140px] rounded-[8px] object-cover shadow-md -rotate-3" />
-          <Image src="/images/venue-bai.png" alt="" width={210} height={224} aria-hidden className="absolute left-[245px] top-[2110px] h-[150px] w-[135px] rounded-[8px] object-cover shadow-md rotate-3" />
+          <Image src="/images/venue-chapel.webp" alt="" width={210} height={224} aria-hidden className="absolute left-[20px] top-[2120px] h-[150px] w-[140px] rounded-[8px] object-cover shadow-md -rotate-3" />
+          <Image src="/images/venue-bai.webp" alt="" width={210} height={224} aria-hidden className="absolute left-[245px] top-[2110px] h-[150px] w-[135px] rounded-[8px] object-cover shadow-md rotate-3" />
           <p className="absolute left-[130px] top-[2073px] w-[141px] text-center font-serif text-[11px] leading-snug text-[#2e3e09]">
             <span className="font-bold">Who would&apos;ve thought a random food trip would lead to forever?</span> Although Carlo and Trixia came from the same school in Palompon, Leyte, they didn&apos;t meet until 2019, when their friend invited Carlo to join a Binondo food trip at Wai Ying. One simple invitation turned into more food adventures, Feast Sundays, and countless moments that slowly became something special. The rest, as they say, is history, and now they&apos;re excited to start their greatest adventure yet, with all of you by their side.
           </p>
-          <Image src="/images/footer-boat.png" alt="" width={285} height={161} aria-hidden className="absolute left-[47px] top-[2400px] h-[150px] w-[285px] rounded-[8px] object-cover shadow-md" />
+          <Image src="/images/footer-boat.webp" alt="" width={285} height={161} aria-hidden className="absolute left-[47px] top-[2400px] h-[150px] w-[285px] rounded-[8px] object-cover shadow-md" />
         </section>
 
         {/* ============ COUNTDOWN + DETAILS ============ */}
@@ -66,7 +66,7 @@ export default function MobileLanding() {
           <p className="absolute left-[201px] top-[2792px] w-[302px] -translate-x-1/2 font-serif text-[13px] uppercase tracking-[0.15em] text-[#73855e]">Saturday 28 November 2026</p>
 
           {/* Ceremony card */}
-          <Image src="/images/venue-chapel.png" alt="Chapel of San Pedro Calungsod" width={303} height={222} className="absolute left-[49px] top-[2824px] h-[222px] w-[303px] rounded-[10px] object-cover" />
+          <Image src="/images/venue-chapel.webp" alt="Chapel of San Pedro Calungsod" width={303} height={222} className="absolute left-[49px] top-[2824px] h-[222px] w-[303px] rounded-[10px] object-cover" />
           <div className="absolute left-[50px] top-[3072px] w-[302px] font-serif text-[#2e3e09]">
             <p className="font-script text-[24px] leading-tight">The Wedding Day</p>
             <p className="text-[15px] leading-tight text-white">Ceremony · 2PM</p>
@@ -77,7 +77,7 @@ export default function MobileLanding() {
           <MapBtn href={gcal("Carlo & Trixia — Ceremony", "20261128T060000Z", "20261128T073000Z", "Chapel of San Pedro Calungsod, Cebu")} label="Add to Calendar" left={189} top={3233} width={141} />
 
           {/* Reception card */}
-          <Image src="/images/venue-bai.png" alt="Bai Hotel Cebu" width={303} height={213} className="absolute left-[50px] top-[3291px] h-[213px] w-[303px] rounded-[10px] object-cover" />
+          <Image src="/images/venue-bai.webp" alt="Bai Hotel Cebu" width={303} height={213} className="absolute left-[50px] top-[3291px] h-[213px] w-[303px] rounded-[10px] object-cover" />
           <div className="absolute left-[50px] top-[3537px] w-[302px] font-serif text-[#2e3e09]">
             <p className="font-script text-[24px] leading-tight">Reception &amp; Revelry</p>
             <p className="text-[15px] leading-tight text-white">Celebration · 4PM onwards</p>
@@ -90,7 +90,7 @@ export default function MobileLanding() {
 
         {/* ============ DRESS CODE ============ */}
         <section id="dress-code" className="absolute left-0 top-0 w-[402px] text-center text-[#2e3e09]">
-          <img src="/images/dress-banner.png" alt="" aria-hidden className="absolute left-[77px] top-[3812px] h-[101px] w-[249px] object-contain opacity-90" />
+          <img src="/images/dress-banner.webp" alt="" aria-hidden className="absolute left-[77px] top-[3812px] h-[101px] w-[249px] object-contain opacity-90" />
           <h3 className="absolute left-[201px] top-[3791px] w-[302px] -translate-x-1/2 font-script text-[32px] leading-none">Dress Code</h3>
           <div className="absolute left-[50px] top-[3999px] w-[302px] space-y-2 font-serif text-[12px] leading-snug">
             <p>We kindly invite our guests to dress in <span className="font-bold">formal attire and adhere to the colors</span> as we celebrate this special occasion.</p>
@@ -118,10 +118,10 @@ export default function MobileLanding() {
 
         {/* ============ FOOTER ============ */}
         <footer id="rsvp" className="absolute left-0 top-[6126px] h-[857px] w-[402px]">
-          <img src="/images/footer-boat.png" alt="Carlo and Trixia in a boat" className="absolute inset-0 h-full w-full object-cover" />
-          <img src="/images/footer-envelope.png" alt="" aria-hidden className="absolute left-[0px] top-[-123px] h-[373px] w-[387px] object-contain" />
+          <img src="/images/footer-boat.webp" alt="Carlo and Trixia in a boat" className="absolute inset-0 h-full w-full object-cover" />
+          <img src="/images/footer-envelope.webp" alt="" aria-hidden className="absolute left-[0px] top-[-123px] h-[373px] w-[387px] object-contain" />
           <div className="absolute left-[65px] top-[37px] h-[258px] w-[328px] overflow-hidden">
-            <img src="/images/footer-card.png" alt="" aria-hidden className="absolute left-1/2 top-1/2 h-[150%] w-[160%] max-w-none -translate-x-1/2 -translate-y-1/2" />
+            <img src="/images/footer-card.webp" alt="" aria-hidden className="absolute left-1/2 top-1/2 h-[150%] w-[160%] max-w-none -translate-x-1/2 -translate-y-1/2" />
           </div>
           <Link href="/rsvp" className="absolute left-[188px] top-[190px] flex h-[35px] w-[84px] rotate-[7deg] items-center justify-center rounded-[8px] bg-[#7d9176] font-serif text-[14px] text-white">RSVP</Link>
         </footer>

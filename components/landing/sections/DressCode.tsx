@@ -4,13 +4,13 @@ export default function DressCode() {
     <section id="dress-code" className="absolute left-0 top-0 w-[1512px]">
       {/* Dress code copy — heading, intro, color palette, then attire lists, all
           stacked in flow so nothing overlaps */}
-      <div className="absolute left-[117px] top-[5859px] w-[1272px] text-center font-serif text-[#2e3e09]">
+      <div data-reveal className="absolute left-[117px] top-[5859px] w-[1272px] text-center font-serif text-[#2e3e09]">
         <p className="font-script text-[65px] leading-tight">Dress Code</p>
 
         {/* Attire colour palette (node 191:164) */}
         <div className="relative mx-auto mt-8 h-[217px] w-[924px] overflow-hidden">
           <img
-            src="/images/dress-banner.png"
+            src="/images/dress-banner.webp"
             alt="Wedding colour palette: avocado, muted olive, pattern green, sage green, laurel green"
             className="absolute h-[437.83%] left-[-42.33%] max-w-none top-[-169.96%] w-[183.08%]"
           />

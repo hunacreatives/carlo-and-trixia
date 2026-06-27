@@ -21,7 +21,7 @@ export default function RsvpDesktop() {
     <ScaledCanvas designWidth={RSVP_W} designHeight={RSVP_H} className="bg-black">
         {/* Forest background (node 195:27) */}
         <img
-          src="/images/rsvp-forest.png"
+          src="/images/rsvp-forest.webp"
           alt=""
           aria-hidden
           className="absolute left-0 top-[-12px] h-[1426px] w-[1536px] object-cover"
@@ -30,7 +30,7 @@ export default function RsvpDesktop() {
         {/* Lily + paper card (node 195:31) */}
         <div className="absolute left-[-135px] top-[344px] h-[1070px] w-[1802px] overflow-hidden pointer-events-none">
           <img
-            src="/images/rsvp-lily-card.png"
+            src="/images/rsvp-lily-card.webp"
             alt=""
             aria-hidden
             className="absolute left-0 top-[-38.88%] h-[238.26%] w-full max-w-none"
@@ -53,7 +53,7 @@ export default function RsvpDesktop() {
             </Link>
           ))}
           <Image
-            src="/images/monogram.png"
+            src="/images/monogram.webp"
             alt="Carlo & Trixia monogram"
             width={85}
             height={85}
@@ -75,7 +75,7 @@ export default function RsvpDesktop() {
 
         {/* Vinyl record (node 205:33) */}
         <img
-          src="/images/record.png"
+          src="/images/record.webp"
           alt=""
           aria-hidden
           className="absolute left-[1332px] top-[865px] h-[95px] w-[168px] object-contain"

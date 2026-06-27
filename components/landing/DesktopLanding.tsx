@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import ScaledCanvas from "../ScaledCanvas";
+import ScrollReveal from "../ScrollReveal";
 import Welcome from "./sections/Welcome";
 import OurStory from "./sections/OurStory";
 import Details from "./sections/Details";
@@ -12,27 +13,59 @@ const DESKTOP_H = 10873;
 
 export default function DesktopLanding() {
   return (
-    <ScaledCanvas designWidth={DESKTOP_W} designHeight={DESKTOP_H} cropTop={1006} className="bg-cream">
+    <ScaledCanvas designWidth={DESKTOP_W} designHeight={DESKTOP_H} cropTop={1006} maxWidth={1280} className="bg-cream page-enter">
+        <ScrollReveal />
         {/* ---- Background layers (behind all content, at exact Figma coords) ---- */}
+        {/* Extended beyond 1512px canvas so it bleeds to screen edges in the full-width outer wrapper */}
         <img
-          src="/images/bg-welcome-story.png"
+          src="/images/bg-welcome-story.webp"
           alt=""
           aria-hidden
-          className="absolute left-0 top-[1006px] h-[3011px] w-[1512px] object-cover"
+          decoding="async"
+          className="absolute top-[1006px] h-[3011px] max-w-none object-cover"
+          style={{ left: "-800px", width: "3200px" }}
         />
+        {/* Parchment-textured background for Welcome + Our Story region.
+            Noise filter is applied to a 400×400 tile and repeated via <pattern>
+            so the browser only rasterises 400×400 instead of 3200×3011. */}
+        <div
+          aria-hidden
+          className="absolute overflow-hidden"
+          style={{ left: "-800px", width: "3200px", top: 1006, height: 3011, backgroundColor: "#b0b395" }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style={{ position: "absolute", inset: 0 }}>
+            <defs>
+              <filter id="pn" x="0%" y="0%" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+                <feColorMatrix type="saturate" values="0" />
+                <feComponentTransfer>
+                  <feFuncA type="linear" slope="0.35" />
+                </feComponentTransfer>
+              </filter>
+              <pattern id="pp" x="0" y="0" width="400" height="400" patternUnits="userSpaceOnUse">
+                <rect width="400" height="400" filter="url(#pn)" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#pp)" />
+          </svg>
+        </div>
         {/* Details misty-mountain backdrop (node 191:68) */}
         <img
-          src="/images/bg-details.png"
+          src="/images/bg-details.webp"
           alt=""
           aria-hidden
+          loading="lazy"
+          decoding="async"
           className="absolute left-[-326px] top-[4017px] h-[3933px] w-[2161px] max-w-none object-cover"
         />
         {/* Dark forest band behind the Gifts/Accommodation cards (fades in from the
             misty mountains above) */}
         <img
-          src="/images/forest-dark.png"
+          src="/images/forest-dark.webp"
           alt=""
           aria-hidden
+          loading="lazy"
+          decoding="async"
           className="absolute left-[-326px] top-[6300px] h-[1760px] w-[2161px] max-w-none object-cover [mask-image:linear-gradient(to_bottom,transparent,black_18%)]"
         />
 
@@ -41,9 +74,11 @@ export default function DesktopLanding() {
         {/* Drifting fog/clouds across the dress-code + forest region — sits behind
             the cards and over the backgrounds. A very gradual mask + scattered wispy
             puffs so there's no visible container edge. */}
+        {/* Extended wide so the fog bleeds to screen edges; centered on canvas mid-x (756px) */}
         <div
           aria-hidden
-          className="fog-mask absolute left-0 top-[5300px] h-[2900px] w-[1512px] overflow-hidden pointer-events-none"
+          className="fog-mask absolute top-[5300px] h-[2900px] overflow-hidden pointer-events-none"
+          style={{ left: "-744px", width: "3000px" }}
         >
           <div className="fog-layer fog-a" />
           <div className="fog-layer fog-b" />
@@ -75,14 +110,18 @@ export default function DesktopLanding() {
         {/* Gifts card (behind, tilts right) */}
         <img
           id="gifts"
-          src="/images/section-gifts.png"
+          src="/images/section-gifts.webp"
           alt="Gifts — a QR code for cash gifts will be provided"
+          loading="lazy"
+          decoding="async"
           className="absolute left-[472px] top-[6565px] h-[1374px] w-[975px] max-w-none rotate-[4deg]"
         />
         {/* Guest Accommodation card (front, tilts left) */}
         <img
-          src="/images/faq-floral.png"
+          src="/images/faq-floral.webp"
           alt="Guest accommodation details — Bai Hotel Cebu"
+          loading="lazy"
+          decoding="async"
           className="absolute left-[67px] top-[6720px] h-[1130px] w-[800px] max-w-none -rotate-[4deg]"
         />
 
@@ -90,10 +129,13 @@ export default function DesktopLanding() {
             reveal the light FAQ below. Scaled wider than the canvas so the paper's
             transparent side margins fall off-screen and the tear runs edge to edge. */}
         <img
-          src="/images/faq-lace.png"
+          src="/images/faq-lace.webp"
           alt=""
           aria-hidden
-          className="absolute left-[-190px] top-[7710px] h-[850px] w-[1900px] max-w-none object-fill"
+          loading="lazy"
+          decoding="async"
+          className="absolute top-[7710px] h-[850px] max-w-none object-fill"
+          style={{ left: "-800px", width: "3200px" }}
         />
 
         {/* ---- Content sections (top of stack) ---- */}
@@ -102,16 +144,18 @@ export default function DesktopLanding() {
         {/* Flowing silk ribbon draped across the top of Our Story (nodes 191:156 /
             191:157) — two ribbons side by side, positioned above the lanterns. */}
         <img
-          src="/images/story-silk.png"
+          src="/images/story-silk.webp"
           alt=""
           aria-hidden
-          className="absolute left-[-9px] top-[1775px] h-[430px] w-[765px] max-w-none object-contain"
+          className="absolute top-[1775px] h-[430px] max-w-none object-fill"
+          style={{ left: "-800px", width: "1556px" }}
         />
         <img
-          src="/images/story-silk.png"
+          src="/images/story-silk.webp"
           alt=""
           aria-hidden
-          className="absolute left-[756px] top-[1775px] h-[430px] w-[765px] max-w-none object-contain"
+          className="absolute top-[1775px] h-[430px] max-w-none object-fill"
+          style={{ left: "756px", width: "1556px" }}
         />
         <Details />
         <DressCode />

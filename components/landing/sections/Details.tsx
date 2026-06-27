@@ -49,15 +49,15 @@ export default function Details() {
       <Countdown />
 
       {/* "Until We Say I Do" */}
-      <h2 className="absolute left-[755px] top-[4546px] w-[1032px] -translate-x-1/2 -translate-y-1/2 font-script text-[90px] leading-none text-[#2e3e09]">
+      <h2 data-reveal className="absolute left-[755px] top-[4546px] w-[1032px] -translate-x-1/2 -translate-y-1/2 font-script text-[90px] leading-none text-[#2e3e09]">
         Until We Say &ldquo;I Do&rdquo;
       </h2>
 
       {/* DETAILS */}
-      <h3 className="absolute left-[753px] top-[4774px] w-[336px] -translate-x-1/2 -translate-y-1/2 font-serif text-[60px] leading-none text-[#73855e]">
+      <h3 data-reveal data-reveal-delay="80" className="absolute left-[753px] top-[4774px] w-[336px] -translate-x-1/2 -translate-y-1/2 font-serif text-[60px] leading-none text-[#73855e]">
         DETAILS
       </h3>
-      <p className="absolute left-[773px] top-[4834px] w-[600px] -translate-x-1/2 -translate-y-1/2 font-serif text-[24px] uppercase tracking-[0.18em] text-[#73855e]">
+      <p data-reveal data-reveal-delay="120" className="absolute left-[773px] top-[4834px] w-[600px] -translate-x-1/2 -translate-y-1/2 font-serif text-[24px] uppercase tracking-[0.18em] text-[#73855e]">
         Saturday 28 November 2026
       </p>
 
@@ -66,11 +66,12 @@ export default function Details() {
 
       {/* ---- Chapel / Ceremony card ---- */}
       <img
-        src="/images/venue-chapel.png"
+        data-reveal
+        src="/images/venue-chapel.webp"
         alt="Chapel of San Pedro Calungsod"
         className="absolute left-[117px] top-[4930px] h-[389px] w-[531px] rounded-[10px] object-cover"
       />
-      <div className="absolute left-[117px] top-[5367px] w-[531px] font-serif text-center text-[#2e3e09]">
+      <div data-reveal data-reveal-delay="100" className="absolute left-[117px] top-[5367px] w-[531px] font-serif text-center text-[#2e3e09]">
         <p className="font-script text-[48.5px] leading-tight text-[#2e3e09]">The Wedding Day</p>
         <p className="text-[36px] leading-tight text-white">Ceremony</p>
         <p className="text-[36px] leading-tight text-white">2PM</p>
@@ -96,11 +97,13 @@ export default function Details() {
 
       {/* ---- Reception card ---- */}
       <img
-        src="/images/venue-bai.png"
+        data-reveal
+        data-reveal-delay="160"
+        src="/images/venue-bai.webp"
         alt="Bai Hotel Cebu"
         className="absolute left-[854px] top-[4930px] h-[389px] w-[534px] rounded-[10px] object-cover"
       />
-      <div className="absolute left-[854px] top-[5369px] w-[535px] font-serif text-center text-[#2e3e09]">
+      <div data-reveal data-reveal-delay="260" className="absolute left-[854px] top-[5369px] w-[535px] font-serif text-center text-[#2e3e09]">
         <p className="font-script text-[48.5px] leading-tight text-[#2e3e09]">Cocktails &amp; Reception</p>
         <p className="text-[36px] leading-tight text-white">Celebration</p>
         <p className="text-[36px] leading-tight text-white">4:00 PM onwards</p>
