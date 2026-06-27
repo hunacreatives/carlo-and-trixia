@@ -61,8 +61,8 @@ export default function FaqFooter() {
         alt="Carlo and Trixia in a boat on the lake"
         className="absolute top-[8844px] max-w-none"
         style={{
-          left: "min(0px, calc((1280px - 100vw) * 0.5906))",
-          width: "max(1512px, calc(100vw * 1.1813))",
+          left: "-137px",
+          width: "calc(100% + 274px)",
           height: "auto",
         }}
       />
