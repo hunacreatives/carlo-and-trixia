@@ -17,7 +17,10 @@ export type RsvpEntry = {
   message: string;
 };
 
-const DATA_FILE = path.join(process.cwd(), "data", "rsvps.json");
+// On Vercel the project root is read-only; /tmp is always writable.
+const DATA_FILE = process.env.VERCEL
+  ? "/tmp/rsvps.json"
+  : path.join(process.cwd(), "data", "rsvps.json");
 
 function readAll(): RsvpEntry[] {
   try {
@@ -28,8 +31,12 @@ function readAll(): RsvpEntry[] {
 }
 
 function writeAll(entries: RsvpEntry[]) {
-  fs.mkdirSync(path.dirname(DATA_FILE), { recursive: true });
-  fs.writeFileSync(DATA_FILE, JSON.stringify(entries, null, 2));
+  try {
+    fs.mkdirSync(path.dirname(DATA_FILE), { recursive: true });
+    fs.writeFileSync(DATA_FILE, JSON.stringify(entries, null, 2));
+  } catch (err) {
+    console.error("[RSVP] write failed:", err);
+  }
 }
 
 export async function POST(request: Request) {

@@ -3,7 +3,9 @@ import fs from "fs";
 import path from "path";
 import type { RsvpEntry } from "@/app/api/rsvp/route";
 
-const DATA_FILE = path.join(process.cwd(), "data", "rsvps.json");
+const DATA_FILE = process.env.VERCEL
+  ? "/tmp/rsvps.json"
+  : path.join(process.cwd(), "data", "rsvps.json");
 const ADMIN_PASSWORD = "carloandtrixia";
 
 function readAll(): RsvpEntry[] {
