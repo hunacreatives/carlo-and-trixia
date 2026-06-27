@@ -40,7 +40,7 @@ export default function DesktopLanding() {
             <rect width="100%" height="100%" fill="url(#pp)" />
           </svg>
         </div>
-        {/* Details misty-mountain backdrop (node 191:68) */}
+        {/* Details misty-mountain backdrop */}
         <img
           src="/images/bg-details.webp"
           alt=""
@@ -50,21 +50,7 @@ export default function DesktopLanding() {
         />
 {/* Guest Accommodation + Gifts lace cards (nodes 191:69 / 191:163) —
             overlapping per Figma: Gifts behind-right, Guest Accommodation in front-left */}
-        {/* Drifting fog/clouds across the dress-code + forest region — sits behind
-            the cards and over the backgrounds. A very gradual mask + scattered wispy
-            puffs so there's no visible container edge. */}
-        {/* Extended wide so the fog bleeds to screen edges; centered on canvas mid-x (756px) */}
-        <div
-          aria-hidden
-          className="fog-mask absolute top-[5300px] h-[2900px] overflow-hidden pointer-events-none"
-          style={{ left: "-744px", width: "3000px" }}
-        >
-          <div className="fog-layer fog-a" />
-          <div className="fog-layer fog-b" />
-          <div className="fog-layer fog-c" />
-        </div>
-
-        {/* ============================================================
+{/* ============================================================
             ANIMATED CLOUDS – Dress Code & Gifts region (canvas y 5820–7200)
             Divs are OVERSIZED (padding ~130-200px all sides) so gradient puffs
             stay well inside and filter:blur() fades cleanly. Positions are the
@@ -72,19 +58,32 @@ export default function DesktopLanding() {
             cloud-d 1040×670 (−200 offset), cloud-c 810×550 (−165),
             cloud-e 900×600 (−180), cloud-b 500×400 (−120), cloud-a 540×440 (−130)
             ============================================================ */}
-        {/* Large (cloud-d 1040×670, visual center at ~520,362 from top-left) */}
-        <div className="cloud cloud-d cloud-r-slow" style={{ left:  380, top: 5558, opacity: 0.62 }} />
+        {/* Large — spread left/center, avoid right-of-gifts cluster */}
+        <div className="cloud cloud-d cloud-r-slow" style={{ left:  380, top: 5558, opacity: 0.60 }} />
         <div className="cloud cloud-d cloud-l-slow" style={{ left: -270, top: 5858, opacity: 0.55 }} />
-        <div className="cloud cloud-d cloud-bob-2"  style={{ left:  580, top: 6258, opacity: 0.52 }} />
-        {/* Medium (cloud-c 810×550 → center at 405,303; cloud-e 900×600 → 450,330) */}
-        <div className="cloud cloud-c cloud-l-med"  style={{ left:  875, top: 5647, opacity: 0.58 }} />
-        <div className="cloud cloud-e cloud-bob-1"  style={{ left: -300, top: 6110, opacity: 0.60 }} />
-        <div className="cloud cloud-c cloud-r-slow" style={{ left:  645, top: 6577, opacity: 0.55 }} />
-        {/* Small (cloud-b 500×400 → center 250,222; cloud-a 540×440 → 270,245) */}
-        <div className="cloud cloud-b cloud-l-fast" style={{ left:  150, top: 5658, opacity: 0.65 }} />
-        <div className="cloud cloud-a cloud-r-fast" style={{ left: 1080, top: 6015, opacity: 0.60 }} />
-        <div className="cloud cloud-b cloud-r-med"  style={{ left:  -30, top: 6548, opacity: 0.55 }} />
-        <div className="cloud cloud-a cloud-l-fast" style={{ left:  380, top: 6855, opacity: 0.50 }} />
+        <div className="cloud cloud-d cloud-bob-2"  style={{ left:  120, top: 6200, opacity: 0.55 }} />
+        <div className="cloud cloud-d cloud-r-slow" style={{ left: -200, top: 6580, opacity: 0.50 }} />
+        <div className="cloud cloud-d cloud-l-slow" style={{ left:  300, top: 6920, opacity: 0.45 }} />
+        {/* Medium — scatter across full width, heavier left of center */}
+        <div className="cloud cloud-c cloud-l-med"  style={{ left:  500, top: 5680, opacity: 0.55 }} />
+        <div className="cloud cloud-e cloud-bob-1"  style={{ left: -280, top: 6050, opacity: 0.58 }} />
+        <div className="cloud cloud-c cloud-r-slow" style={{ left:  180, top: 6320, opacity: 0.60 }} />
+        <div className="cloud cloud-e cloud-l-med"  style={{ left: -100, top: 6480, opacity: 0.58 }} />
+        <div className="cloud cloud-c cloud-bob-1"  style={{ left:  400, top: 6700, opacity: 0.50 }} />
+        <div className="cloud cloud-e cloud-r-slow" style={{ left: -250, top: 7050, opacity: 0.45 }} />
+        <div className="cloud cloud-c cloud-l-med"  style={{ left:  550, top: 7220, opacity: 0.42 }} />
+        {/* Small — dense behind For Ladies (y≈6300–6500) and scattered through gifts */}
+        <div className="cloud cloud-b cloud-l-fast" style={{ left:  150, top: 5680, opacity: 0.62 }} />
+        <div className="cloud cloud-a cloud-bob-1"  style={{ left:  320, top: 5940, opacity: 0.58 }} />
+        <div className="cloud cloud-b cloud-r-med"  style={{ left:   50, top: 6120, opacity: 0.60 }} />
+        <div className="cloud cloud-a cloud-l-fast" style={{ left:  600, top: 6280, opacity: 0.62 }} />
+        <div className="cloud cloud-b cloud-bob-2"  style={{ left:  -60, top: 6360, opacity: 0.65 }} />
+        <div className="cloud cloud-a cloud-r-med"  style={{ left:  250, top: 6460, opacity: 0.62 }} />
+        <div className="cloud cloud-b cloud-l-slow" style={{ left:  750, top: 6560, opacity: 0.50 }} />
+        <div className="cloud cloud-a cloud-bob-2"  style={{ left:  -80, top: 6780, opacity: 0.48 }} />
+        <div className="cloud cloud-b cloud-r-fast" style={{ left:  450, top: 6950, opacity: 0.45 }} />
+        <div className="cloud cloud-a cloud-l-med"  style={{ left:  100, top: 7150, opacity: 0.42 }} />
+        <div className="cloud cloud-b cloud-bob-1"  style={{ left:  700, top: 7300, opacity: 0.40 }} />
 
         {/* Gifts card (behind, tilts right) */}
         <img

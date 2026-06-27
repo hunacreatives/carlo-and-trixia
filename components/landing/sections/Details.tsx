@@ -66,17 +66,16 @@ export default function Details() {
 
       {/* ---- Chapel / Ceremony card ---- */}
       <img
-        data-reveal
         src="/images/venue-chapel.webp"
         alt="Chapel of San Pedro Calungsod"
         className="absolute left-[117px] top-[4930px] h-[389px] w-[531px] rounded-[10px] object-cover"
       />
-      <div data-reveal data-reveal-delay="100" className="absolute left-[117px] top-[5367px] w-[531px] font-serif text-center text-[#2e3e09]">
+      <div className="absolute left-[117px] top-[5367px] w-[531px] font-serif text-center text-[#2e3e09]">
         <p className="font-script text-[48.5px] leading-tight text-[#2e3e09]">The Wedding Day</p>
-        <p className="text-[36px] leading-tight text-white">Ceremony</p>
-        <p className="text-[36px] leading-tight text-white">2PM</p>
-        <p className="text-[36px] font-bold leading-tight text-white">Chapel of San Pedro Calungsod</p>
-        <p className="mt-5 text-[26px] leading-snug text-white">
+        <p className="text-[36px] leading-tight text-[#2e3e09]">Ceremony</p>
+        <p className="text-[36px] leading-tight text-[#2e3e09]">2PM</p>
+        <p className="text-[36px] font-bold leading-tight text-[#2e3e09]">Chapel of San Pedro Calungsod</p>
+        <p className="mt-5 text-[26px] leading-snug text-[#2e3e09]">
           Join us as we exchange vows and begin our forever surrounded by the love of family and friends.
         </p>
       </div>
@@ -97,18 +96,16 @@ export default function Details() {
 
       {/* ---- Reception card ---- */}
       <img
-        data-reveal
-        data-reveal-delay="160"
         src="/images/venue-bai.webp"
         alt="Bai Hotel Cebu"
         className="absolute left-[854px] top-[4930px] h-[389px] w-[534px] rounded-[10px] object-cover"
       />
-      <div data-reveal data-reveal-delay="260" className="absolute left-[854px] top-[5369px] w-[535px] font-serif text-center text-[#2e3e09]">
+      <div className="absolute left-[854px] top-[5369px] w-[535px] font-serif text-center text-[#2e3e09]">
         <p className="font-script text-[48.5px] leading-tight text-[#2e3e09]">Cocktails &amp; Reception</p>
-        <p className="text-[36px] leading-tight text-white">Celebration</p>
-        <p className="text-[36px] leading-tight text-white">4:00 PM onwards</p>
-        <p className="text-[36px] font-bold leading-tight text-white">Bai Hotel Cebu</p>
-        <p className="mt-5 text-[26px] leading-snug text-white">
+        <p className="text-[36px] leading-tight text-[#2e3e09]">Celebration</p>
+        <p className="text-[36px] leading-tight text-[#2e3e09]">4:00 PM onwards</p>
+        <p className="text-[36px] font-bold leading-tight text-[#2e3e09]">Bai Hotel Cebu</p>
+        <p className="mt-5 text-[26px] leading-snug text-[#2e3e09]">
           From heartfelt toasts to joyful moments on the dance floor, we look forward to sharing this special occasion with you long into the night.
         </p>
       </div>
