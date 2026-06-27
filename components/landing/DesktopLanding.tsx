@@ -114,7 +114,7 @@ export default function DesktopLanding() {
           alt="Gifts — a QR code for cash gifts will be provided"
           loading="lazy"
           decoding="async"
-          className="absolute left-[472px] top-[6565px] h-[1374px] w-[975px] max-w-none rotate-[4deg]"
+          className="absolute left-[522px] top-[6565px] h-[1374px] w-[975px] max-w-none rotate-[4deg]"
         />
         {/* Guest Accommodation card (front, tilts left) */}
         <img
@@ -122,7 +122,7 @@ export default function DesktopLanding() {
           alt="Guest accommodation details — Bai Hotel Cebu"
           loading="lazy"
           decoding="async"
-          className="absolute left-[67px] top-[6720px] h-[1130px] w-[800px] max-w-none -rotate-[4deg]"
+          className="absolute left-[67px] top-[6650px] h-[1200px] w-[850px] max-w-none -rotate-[4deg]"
         />
 
         {/* Torn-paper edge (node 191:155 "JKSDDA") — the dark forest tears open to
