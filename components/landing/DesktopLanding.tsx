@@ -16,15 +16,6 @@ export default function DesktopLanding() {
     <ScaledCanvas designWidth={DESKTOP_W} designHeight={DESKTOP_H} cropTop={1006} maxWidth={1280} className="bg-cream page-enter">
         <ScrollReveal />
         {/* ---- Background layers (behind all content, at exact Figma coords) ---- */}
-        {/* Extended beyond 1512px canvas so it bleeds to screen edges in the full-width outer wrapper */}
-        <img
-          src="/images/bg-welcome-story.webp"
-          alt=""
-          aria-hidden
-          decoding="async"
-          className="absolute top-[1006px] h-[3011px] max-w-none object-cover"
-          style={{ left: "-800px", width: "3200px" }}
-        />
         {/* Parchment-textured background for Welcome + Our Story region.
             Noise filter is applied to a 400×400 tile and repeated via <pattern>
             so the browser only rasterises 400×400 instead of 3200×3011. */}
@@ -54,7 +45,6 @@ export default function DesktopLanding() {
           src="/images/bg-details.webp"
           alt=""
           aria-hidden
-          loading="lazy"
           decoding="async"
           className="absolute left-[-326px] top-[4017px] h-[3933px] w-[2161px] max-w-none object-cover"
         />
