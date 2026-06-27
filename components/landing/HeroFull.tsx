@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const NAV = [
   { label: "Home", href: "#home" },
@@ -23,12 +23,21 @@ function scrollToSection(href: string) {
 
 export default function HeroFull() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const play = () => videoRef.current?.play().catch(() => {});
     window.addEventListener("intro:opened", play, { once: true });
     return () => window.removeEventListener("intro:opened", play);
   }, []);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <section id="home" className="relative h-[100svh] w-full overflow-hidden bg-black">
@@ -47,44 +56,140 @@ export default function HeroFull() {
       {/* Top scrim for nav legibility */}
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/55 to-transparent" />
 
-      {/* Nav */}
+      {/* ── Desktop nav ─────────────────────────────────────────────── */}
       <nav className="absolute inset-x-0 top-0 z-10 flex items-center justify-center gap-[100px] px-6 py-5">
         <div className="hidden items-center gap-[100px] md:flex">
-          {NAV.slice(0, 3).map((i) => (
+          {NAV.slice(0, 3).map((i) =>
             i.href.startsWith("#") ? (
               <a
-                key={i.label} href={i.href}
+                key={i.label}
+                href={i.href}
                 className="font-sans text-[13px] font-light uppercase tracking-[0.12em] text-cream/90 transition-colors hover:text-white"
                 onClick={(e) => { e.preventDefault(); scrollToSection(i.href); }}
               >
                 {i.label}
               </a>
             ) : (
-              <Link key={i.label} href={i.href} className="font-sans text-[13px] font-light uppercase tracking-[0.12em] text-cream/90 transition-colors hover:text-white">
+              <Link
+                key={i.label}
+                href={i.href}
+                className="font-sans text-[13px] font-light uppercase tracking-[0.12em] text-cream/90 transition-colors hover:text-white"
+              >
                 {i.label}
               </Link>
             )
-          ))}
+          )}
         </div>
-        <Image src="/images/monogram-v2.webp" alt="Carlo & Trixia monogram" width={447} height={447} className="h-24 w-24 md:h-28 md:w-28" priority />
+
+        <Image
+          src="/images/monogram-v2.webp"
+          alt="Carlo & Trixia monogram"
+          width={447}
+          height={447}
+          className="h-24 w-24 md:h-28 md:w-28"
+          priority
+        />
+
         <div className="hidden items-center gap-[100px] md:flex">
-          {NAV.slice(3).map((i) => (
+          {NAV.slice(3).map((i) =>
             i.href.startsWith("#") ? (
               <a
-                key={i.label} href={i.href}
+                key={i.label}
+                href={i.href}
                 className="font-sans text-[13px] font-light uppercase tracking-[0.12em] text-cream/90 transition-colors hover:text-white"
                 onClick={(e) => { e.preventDefault(); scrollToSection(i.href); }}
               >
                 {i.label}
               </a>
             ) : (
-              <Link key={i.label} href={i.href} className="font-sans text-[13px] font-light uppercase tracking-[0.12em] text-cream/90 transition-colors hover:text-white">
+              <Link
+                key={i.label}
+                href={i.href}
+                className="font-sans text-[13px] font-light uppercase tracking-[0.12em] text-cream/90 transition-colors hover:text-white"
+              >
                 {i.label}
               </Link>
             )
-          ))}
+          )}
         </div>
+
+        {/* ── Mobile hamburger (fixed so it stays on screen while scrolling) ── */}
+        <button
+          onClick={() => setMenuOpen(true)}
+          aria-label="Open navigation"
+          className="fixed right-4 top-4 z-40 flex h-10 w-10 flex-col items-center justify-center gap-[6px] rounded-full bg-black/30 md:hidden"
+          style={{ backdropFilter: "blur(6px)" }}
+        >
+          <span className="h-px w-5 bg-white/90" />
+          <span className="h-px w-5 bg-white/90" />
+          <span className="h-px w-5 bg-white/90" />
+        </button>
       </nav>
+
+      {/* ── Mobile nav drawer ───────────────────────────────────────── */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 z-50 flex flex-col bg-[#1a1f14]/97 md:hidden"
+          style={{ backdropFilter: "blur(4px)" }}
+        >
+          {/* Close button */}
+          <button
+            onClick={closeMenu}
+            aria-label="Close navigation"
+            className="absolute right-5 top-6 flex h-10 w-10 items-center justify-center text-cream/70"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M2 2L18 18M18 2L2 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </button>
+
+          {/* Monogram */}
+          <div className="flex justify-center pt-10">
+            <Image
+              src="/images/monogram-v2.webp"
+              alt=""
+              aria-hidden
+              width={80}
+              height={80}
+              className="opacity-60"
+            />
+          </div>
+
+          {/* Nav links */}
+          <nav className="flex flex-1 flex-col items-center justify-center gap-8">
+            {NAV.map((i) =>
+              i.href.startsWith("#") ? (
+                <a
+                  key={i.label}
+                  href={i.href}
+                  className="font-sans text-[14px] font-light uppercase tracking-[0.22em] text-cream/80 transition-colors hover:text-white"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    closeMenu();
+                    setTimeout(() => scrollToSection(i.href), 300);
+                  }}
+                >
+                  {i.label}
+                </a>
+              ) : (
+                <Link
+                  key={i.label}
+                  href={i.href}
+                  className="font-sans text-[14px] font-light uppercase tracking-[0.22em] text-cream/80 transition-colors hover:text-white"
+                  onClick={closeMenu}
+                >
+                  {i.label}
+                </Link>
+              )
+            )}
+          </nav>
+
+          {/* Date tag */}
+          <p className="pb-12 text-center font-serif text-[12px] tracking-[0.15em] text-cream/30">
+            Saturday · 28 November 2026 · Cebu
+          </p>
+        </div>
+      )}
 
       {/* Couple names */}
       <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
