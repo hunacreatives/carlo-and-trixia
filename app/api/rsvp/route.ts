@@ -40,38 +40,43 @@ function writeAll(entries: RsvpEntry[]) {
 }
 
 export async function POST(request: Request) {
-  let data: Omit<RsvpEntry, "id" | "submittedAt">;
   try {
-    data = await request.json();
-  } catch {
-    return NextResponse.json({ ok: false, error: "Invalid request" }, { status: 400 });
+    let data: Omit<RsvpEntry, "id" | "submittedAt">;
+    try {
+      data = await request.json();
+    } catch {
+      return NextResponse.json({ ok: false, error: "Invalid request" }, { status: 400 });
+    }
+
+    if (!data.firstName?.trim() || !data.lastName?.trim())
+      return NextResponse.json({ ok: false, error: "Name is required" }, { status: 422 });
+    if (!data.email?.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
+      return NextResponse.json({ ok: false, error: "Valid email is required" }, { status: 422 });
+    if (data.attending !== "yes" && data.attending !== "no")
+      return NextResponse.json({ ok: false, error: "Please choose Yes or No" }, { status: 422 });
+
+    const entry: RsvpEntry = {
+      id: randomUUID(),
+      submittedAt: new Date().toISOString(),
+      firstName: data.firstName.trim(),
+      lastName: data.lastName.trim(),
+      email: data.email.trim(),
+      attending: data.attending,
+      plusOne: data.plusOne ?? "",
+      guestName: (data.guestName ?? "").trim(),
+      allergies: (data.allergies ?? "").trim(),
+      songRequest: (data.songRequest ?? "").trim(),
+      message: (data.message ?? "").trim(),
+    };
+
+    const all = readAll();
+    all.push(entry);
+    writeAll(all);
+
+    console.log("[RSVP saved]", JSON.stringify(entry));
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    console.error("[RSVP] unhandled error:", err);
+    return NextResponse.json({ ok: false, error: "Something went wrong. Please try again." }, { status: 500 });
   }
-
-  if (!data.firstName?.trim() || !data.lastName?.trim())
-    return NextResponse.json({ ok: false, error: "Name is required" }, { status: 422 });
-  if (!data.email?.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
-    return NextResponse.json({ ok: false, error: "Valid email is required" }, { status: 422 });
-  if (data.attending !== "yes" && data.attending !== "no")
-    return NextResponse.json({ ok: false, error: "Please choose Yes or No" }, { status: 422 });
-
-  const entry: RsvpEntry = {
-    id: randomUUID(),
-    submittedAt: new Date().toISOString(),
-    firstName: data.firstName.trim(),
-    lastName: data.lastName.trim(),
-    email: data.email.trim(),
-    attending: data.attending,
-    plusOne: data.plusOne ?? "",
-    guestName: (data.guestName ?? "").trim(),
-    allergies: (data.allergies ?? "").trim(),
-    songRequest: (data.songRequest ?? "").trim(),
-    message: (data.message ?? "").trim(),
-  };
-
-  const all = readAll();
-  all.push(entry);
-  writeAll(all);
-
-  console.log("[RSVP saved]", entry.id, entry.firstName, entry.lastName);
-  return NextResponse.json({ ok: true });
 }

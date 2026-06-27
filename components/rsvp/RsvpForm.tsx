@@ -45,7 +45,10 @@ export default function RsvpForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      const json = await res.json();
+      const text = await res.text();
+      let json: { ok: boolean; error?: string };
+      try { json = JSON.parse(text); }
+      catch { throw new Error("Server error — please try again."); }
       if (!res.ok || !json.ok) throw new Error(json.error || "Something went wrong");
       setStatus("success");
     } catch (err) {
