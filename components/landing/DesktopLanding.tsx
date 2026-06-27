@@ -48,18 +48,7 @@ export default function DesktopLanding() {
           decoding="async"
           className="absolute left-[-326px] top-[4017px] h-auto w-[2161px] max-w-none"
         />
-        {/* Dark forest band behind the Gifts/Accommodation cards (fades in from the
-            misty mountains above) */}
-        <img
-          src="/images/forest-dark.webp"
-          alt=""
-          aria-hidden
-          loading="lazy"
-          decoding="async"
-          className="absolute left-[-326px] top-[6300px] h-[1760px] w-[2161px] max-w-none object-cover [mask-image:linear-gradient(to_bottom,transparent,black_18%)]"
-        />
-
-        {/* Guest Accommodation + Gifts lace cards (nodes 191:69 / 191:163) —
+{/* Guest Accommodation + Gifts lace cards (nodes 191:69 / 191:163) —
             overlapping per Figma: Gifts behind-right, Guest Accommodation in front-left */}
         {/* Drifting fog/clouds across the dress-code + forest region — sits behind
             the cards and over the backgrounds. A very gradual mask + scattered wispy
