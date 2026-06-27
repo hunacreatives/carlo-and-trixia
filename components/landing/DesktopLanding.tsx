@@ -46,7 +46,7 @@ export default function DesktopLanding() {
           alt=""
           aria-hidden
           decoding="async"
-          className="absolute left-[-326px] top-[4017px] h-[3933px] w-[2161px] max-w-none object-cover"
+          className="absolute left-[-326px] top-[4017px] h-auto w-[2161px] max-w-none"
         />
         {/* Dark forest band behind the Gifts/Accommodation cards (fades in from the
             misty mountains above) */}
