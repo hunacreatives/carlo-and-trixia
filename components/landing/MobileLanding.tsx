@@ -6,7 +6,7 @@ import MobileCountdown from "./MobileCountdown";
 
 // Figma mobile frame: 402 x 7319 (node 189:1147 — MOBILE VIEW Revised)
 const MOBILE_W = 402;
-const MOBILE_H = 7319;
+const MOBILE_H = 7419;
 
 function MapBtn({ href, label, left, top, width }: { href: string; label: string; left: number; top: number; width: number }) {
   return (
@@ -31,12 +31,24 @@ export default function MobileLanding() {
     <ScaledCanvas designWidth={MOBILE_W} designHeight={MOBILE_H} cropTop={873} className="bg-cream">
 
       {/* ============ HERO BACKGROUNDS ============ */}
-      {/* bg-welcome-story behind welcome + story sections */}
+      {/* Welcome section bg — same image flipped vertically (Figma node 189:1215) */}
+      <div className="absolute pointer-events-none" style={{ left: -6, top: 873, width: 415, height: 876 }}>
+        <div style={{ transform: "scaleY(-1)", width: 415, height: 876 }}>
+          <img src="/images/bg-welcome-story.webp" alt="" aria-hidden
+            className="h-full w-full object-cover object-bottom" />
+        </div>
+      </div>
+      {/* Our Story section bg (Figma node 189:1216) */}
       <img src="/images/bg-welcome-story.webp" alt="" aria-hidden
         className="absolute left-[-1px] top-[1752px] h-[799px] w-[402px] object-cover object-bottom" />
-      {/* bg-details behind schedule/dress/accommodation/gifts */}
-      <img src="/images/bg-details.webp" alt="" aria-hidden
-        className="absolute left-[-104px] top-[2817px] h-[2772px] w-[610px] object-cover" />
+      {/* bg-details — dark forest behind schedule/gifts/faq (Figma node 189:1148) */}
+      <div className="absolute pointer-events-none" style={{ left: -104, top: 2817, width: 610, height: 2872 }}>
+        <div className="absolute inset-0 overflow-hidden">
+          <img src="/images/bg-details.webp" alt="" aria-hidden
+            className="absolute max-w-none"
+            style={{ height: "100%", left: "-75.6%", top: 0, width: "351.68%" }} />
+        </div>
+      </div>
 
       {/* ============ WELCOME ============ */}
       <section className="absolute left-0 top-0 w-[402px] text-center text-white">
@@ -49,198 +61,249 @@ export default function MobileLanding() {
       </section>
 
       {/* ============ OUR STORY ============ */}
-      <section id="our-story" className="absolute left-0 top-0 w-[402px]">
-        {/* Torn silk / paper border at top of story */}
+      {/* overflow-hidden clips the rotated botanical elements that would otherwise bleed into countdown section */}
+      <section id="our-story" className="absolute left-0 top-0 w-[402px]" style={{ height: 2817 }}>
+        {/* Torn silk border */}
         <div className="absolute flex h-[300px] items-center justify-center pointer-events-none"
-          style={{ left: -37, top: 1578, width: 478 }}>
-          <div className="-scale-y-100 flex-none" style={{ transform: "rotate(-174.18deg) scaleY(-1)" }}>
-            <img src="/images/story-silk.webp" alt="" aria-hidden
-              className="h-[256px] w-[455px] object-cover" />
+          style={{ left: -37, top: 1578, width: 478, zIndex: 20 }}>
+          <div style={{ transform: "rotate(-174.18deg) scaleY(-1)" }}>
+            <img src="/images/story-silk.webp" alt="" aria-hidden className="h-[256px] w-[455px] object-cover" />
           </div>
         </div>
 
-        {/* Floral corners */}
-        <img src="/images/story-21.webp" alt="" aria-hidden
-          className="absolute left-[9px] top-[1752px] h-[245px] w-[171px] object-contain opacity-95" />
-        <div className="absolute pointer-events-none"
-          style={{ left: 391, top: 1752, width: 171, height: 245 }}>
-          <img src="/images/story-21.webp" alt="" aria-hidden
-            className="h-full w-full object-contain opacity-95"
-            style={{ transform: "rotate(180deg) scaleY(-1)" }} />
+        {/* Left arch corner */}
+        <div className="absolute overflow-hidden pointer-events-none" style={{ left: 9, top: 1752, width: 171, height: 245, zIndex: 10 }}>
+          <img src="/images/story-21.webp" alt="" aria-hidden className="absolute max-w-none"
+            style={{ height: "268.13%", left: "-0.06%", top: 0, width: "296.25%" }} />
         </div>
-
-        {/* Main story background / large circle photo */}
-        <div className="absolute overflow-hidden pointer-events-none"
-          style={{ left: -51, top: 1889, width: 506, height: 898 }}>
-          <img src="/images/story-22.webp" alt="" aria-hidden
-            className="absolute max-w-none"
-            style={{ height: "123.6%", left: "-34.71%", top: "-10.7%", width: "169.51%" }} />
-        </div>
-
-        {/* Our Story heading */}
-        <h3 className="absolute left-[201px] top-[2068px] w-[366px] -translate-x-1/2 -translate-y-1/2 font-heading text-[82px] leading-none text-[#2e3e09] text-center">Our Story</h3>
-
-        {/* Left story text column — bold opening */}
-        <div className="absolute font-serif text-[14px] leading-snug text-[#2e3e09]"
-          style={{ left: 51, top: 2135, width: 155 }}>
-          <p className="font-bold">Who would&apos;ve thought a random food trip would lead to forever?</p>
-          <p className="mt-1">Although Carlo and Trixia came from the same school in Palompon, Leyte, they didn&apos;t meet until 2019, when their friend invited Carlo to join a Binondo food trip at Wai Ying.</p>
-        </div>
-
-        {/* Photo collage — couple photos + lily art (top-right quadrant) */}
-        <div className="absolute pointer-events-none overflow-visible"
-          style={{ left: 240, top: 2076, width: 239, height: 253 }}>
-          {/* story-4 couple photo - slightly rotated */}
-          <Image src="/images/story-4.webp" alt="" aria-hidden width={140} height={180}
-            className="absolute shadow-md object-cover rounded-sm"
-            style={{ left: 29, top: 90, width: 138, height: 175, transform: "rotate(12.13deg)" }} />
-          {/* story-6 lily art overlay */}
-          <div className="absolute overflow-hidden"
-            style={{ left: 68, top: 97, width: 145, height: 200, transform: "rotate(-1.72deg)" }}>
-            <img src="/images/story-6.webp" alt="" aria-hidden
-              className="absolute max-w-none"
-              style={{ height: "100%", left: "-155.81%", width: "255.81%" }} />
-          </div>
-          {/* story-4 smaller piece */}
-          <Image src="/images/story-4.webp" alt="" aria-hidden width={90} height={115}
-            className="absolute shadow-md object-cover rounded-sm"
-            style={{ left: 27, top: 100, width: 90, height: 115, transform: "rotate(-6.86deg)" }} />
-        </div>
-
-        {/* Botanical decoration story-23 (left arc) */}
-        <div className="absolute pointer-events-none overflow-visible"
-          style={{ left: -108, top: 2315, width: 351, height: 447 }}>
-          <div className="overflow-hidden rounded-sm"
-            style={{ width: 394, height: 220, transform: "rotate(-111.75deg) scaleY(-1)" }}>
-            <img src="/images/story-23.webp" alt="" aria-hidden
-              className="absolute max-w-none"
-              style={{ height: "250.99%", left: "-14.99%", top: "-0.12%", width: "108.53%" }} />
-          </div>
-        </div>
-
-        {/* Botanical decoration story-23 (right arc, rotated) */}
-        <div className="absolute pointer-events-none overflow-visible"
-          style={{ left: 155, top: 2100, width: 379, height: 436 }}>
-          <div className="overflow-hidden rounded-sm"
-            style={{ width: 381, height: 213, transform: "rotate(-120.95deg)" }}>
-            <img src="/images/story-23.webp" alt="" aria-hidden
-              className="absolute max-w-none"
-              style={{ height: "250.99%", left: "-14.99%", top: "-0.12%", width: "108.53%" }} />
-          </div>
-        </div>
-
-        {/* story-26 foliage rotated (left) */}
-        <div className="absolute pointer-events-none overflow-visible"
-          style={{ left: -80, top: 2316, width: 324, height: 341 }}>
-          <div style={{ transform: "rotate(19.14deg)" }}>
-            <div className="overflow-hidden"
-              style={{ width: 247, height: 276 }}>
-              <img src="/images/story-26.webp" alt="" aria-hidden
-                className="absolute max-w-none"
-                style={{ height: "130.33%", left: "-12.07%", top: "-13.64%", width: "258.75%" }} />
+        {/* Right arch corner (mirrored) — Figma: left=246, top=1791 */}
+        <div className="absolute flex items-center justify-center pointer-events-none"
+          style={{ left: 246, top: 1791, width: 171, height: 245, zIndex: 10 }}>
+          <div style={{ transform: "rotate(180deg) scaleY(-1)" }}>
+            <div className="overflow-hidden" style={{ width: 171, height: 245 }}>
+              <img src="/images/story-21.webp" alt="" aria-hidden className="absolute max-w-none"
+                style={{ height: "268.13%", left: "-0.06%", top: 0, width: "296.25%" }} />
             </div>
           </div>
         </div>
 
-        {/* Right story text column */}
-        <div className="absolute font-serif text-[14px] leading-snug text-[#2e3e09] text-right"
-          style={{ right: 0, top: 2446, width: 156 }}>
-          <p>One simple invitation turned into more food adventures, Feast Sundays, and countless moments that slowly became something special.</p>
-          <p className="mt-2">The rest, as they say, is history, and now they&apos;re excited to start their greatest adventure yet, with all of you by their side.</p>
+        {/* Large background (story-22) */}
+        <div className="absolute overflow-hidden pointer-events-none" style={{ left: -51, top: 1889, width: 506, height: 898 }}>
+          <img src="/images/story-22.webp" alt="" aria-hidden className="absolute max-w-none"
+            style={{ height: "123.6%", left: "-34.71%", top: "-10.7%", width: "169.51%" }} />
         </div>
 
-        {/* Couple boat / lake photo */}
-        <div className="absolute overflow-hidden pointer-events-none"
-          style={{ left: 151, top: 2669, width: 337, height: 191 }}>
-          <img src="/images/story-24.webp" alt="" aria-hidden
-            className="absolute max-w-none"
+        {/* "Our Story" heading */}
+        <h3 className="absolute left-[202px] top-[2068px] w-[366px] -translate-x-1/2 -translate-y-1/2 font-heading text-[68px] leading-none text-[#2e3e09] text-center">Our Story</h3>
+
+        {/* ── PHOTO COLLAGE (Figma node 189:1230 "Group 12") — couple photos + lily art,
+              top-right quadrant. Exact coords/crops from Figma; calc() anchored to the 402px canvas. ── */}
+        {/* story-6 sparkler photo (rotate -1.72deg) */}
+        <div className="absolute flex h-[204.122px] items-center justify-center pointer-events-none left-[calc(50%+39.59px)] top-[2246.28px] w-[145.029px]">
+          <div className="flex-none rotate-[-1.72deg]">
+            <div className="relative h-[200.039px] w-[139.089px]">
+              <div className="absolute inset-0 overflow-hidden">
+                <img src="/images/story-6.webp" alt="" aria-hidden className="absolute h-full left-[-155.81%] max-w-none top-0 w-[255.81%]" />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* story-6 lily (rotate 48.58deg) */}
+        <div className="absolute flex h-[190.269px] items-center justify-center pointer-events-none left-[calc(25%+34.32px)] top-[2150.65px] w-[190.353px]">
+          <div className="flex-none rotate-[48.58deg]">
+            <div className="relative h-[135.306px] w-[134.361px]">
+              <div className="absolute inset-0 overflow-hidden">
+                <img src="/images/story-6.webp" alt="" aria-hidden className="absolute h-[182.11%] left-[-40.53%] max-w-none top-[-60.77%] w-[326.18%]" />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* story-4 large photo (rotate 12.13deg) */}
+        <div className="absolute flex h-[198.963px] items-center justify-center pointer-events-none left-[calc(50%+23.45px)] top-[2126.88px] w-[171.256px]">
+          <div className="flex-none rotate-[12.13deg]">
+            <div className="relative h-[173.895px] w-[137.799px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
+              <div className="absolute inset-0 overflow-hidden">
+                <img src="/images/story-4.webp" alt="" aria-hidden className="absolute h-[116.36%] left-[-17.78%] max-w-none top-[-8.64%] w-[261.19%]" />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* story-4 small photo b (rotate -6.86deg) */}
+        <div className="absolute flex h-[88.077px] items-center justify-center pointer-events-none left-[calc(50%+5.71px)] top-[2252.69px] w-[94.687px]">
+          <div className="flex-none rotate-[-6.86deg]">
+            <div className="relative h-[78.368px] w-[85.937px]">
+              <div className="absolute inset-0 overflow-hidden">
+                <img src="/images/story-4.webp" alt="" aria-hidden className="absolute h-[171.03%] left-[-132.19%] max-w-none top-[-12.69%] w-[277.41%]" />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* story-6 lily right (rotate 77.02deg) */}
+        <div className="absolute flex h-[125.748px] items-center justify-center pointer-events-none left-[calc(75%+5.09px)] top-[2195.72px] w-[126.301px]">
+          <div className="flex-none rotate-[77.02deg]">
+            <div className="relative h-[105.467px] w-[104.73px]">
+              <div className="absolute inset-0 overflow-hidden">
+                <img src="/images/story-6.webp" alt="" aria-hidden className="absolute h-[182.11%] left-[-40.53%] max-w-none top-[-60.77%] w-[326.18%]" />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* story-4 tiny sliver (rotate 12.13deg) */}
+        <div className="absolute flex h-[57.032px] items-center justify-center pointer-events-none left-[calc(75%+23.6px)] top-[2268.36px] w-[44.917px]">
+          <div className="flex-none rotate-[12.13deg]">
+            <div className="relative h-[50.807px] w-[35.025px]">
+              <div className="absolute inset-0 overflow-hidden">
+                <img src="/images/story-4.webp" alt="" aria-hidden className="absolute h-[398.27%] left-[-363.39%] max-w-none top-[-271.82%] w-[1027.58%]" />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* story-6 lily sliver (rotate -1.72deg) */}
+        <div className="absolute flex h-[82.761px] items-center justify-center pointer-events-none left-[calc(50%+40.36px)] top-[2278.23px] w-[55.833px]">
+          <div className="flex-none rotate-[-1.72deg]">
+            <div className="relative h-[81.195px] w-[53.421px]">
+              <div className="absolute inset-0 overflow-hidden">
+                <img src="/images/story-6.webp" alt="" aria-hidden className="absolute h-[246.37%] left-[-405.66%] max-w-none top-[-35.76%] w-[666.03%]" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── BOTANICAL DECORATIONS ── */}
+        {/* story-26 (Figma node 189:1229) — walking-couple photo only. The crop window is
+              clipped on the right (width 190 vs the original 323.63) so the adjacent dark
+              lake photo in the sprite no longer covers the right-hand story text (block 2).
+              Image is sized in px so narrowing the window keeps the couple at the same
+              scale/position (no rescale, no stretch). */}
+        <div className="absolute pointer-events-none overflow-hidden" style={{ left: -34, top: 2388, width: 224, height: 270, transform: "scale(0.9)", transformOrigin: "top left" }}>
+          <img src="/images/story-26.webp" alt="" aria-hidden className="absolute max-w-none"
+            style={{ width: 617, height: 347, left: -38, top: -37 }} />
+        </div>
+
+        {/* Couple lake/boat photo */}
+        <div className="absolute overflow-hidden pointer-events-none" style={{ left: 151, top: 2669, width: 337, height: 191 }}>
+          <img src="/images/story-24.webp" alt="" aria-hidden className="absolute max-w-none"
             style={{ height: "330.82%", left: "-20.01%", top: "-76.1%", width: "144.22%" }} />
         </div>
 
-        {/* story-26 foliage (center, angled) */}
-        <div className="absolute pointer-events-none overflow-visible"
-          style={{ left: -67, top: 2620, width: 375, height: 316 }}>
+        {/* story-26 foliage (10.93deg) — Figma node 189:1243 (x≈-18) */}
+        <div className="absolute pointer-events-none overflow-visible" style={{ left: -18, top: 2620, width: 375, height: 316 }}>
           <div style={{ transform: "rotate(10.93deg)" }}>
-            <div className="overflow-hidden" style={{ width: 333, height: 257 }}>
-              <img src="/images/story-26.webp" alt="" aria-hidden
-                className="absolute max-w-none"
+            <div className="relative overflow-hidden" style={{ width: 333, height: 257 }}>
+              <img src="/images/story-26.webp" alt="" aria-hidden className="absolute max-w-none"
                 style={{ height: "156.45%", left: "-105.56%", top: "-13.03%", width: "215.17%" }} />
             </div>
           </div>
         </div>
 
-        {/* story-25 lily cluster — multiple tall botanicals */}
-        <div className="absolute pointer-events-none overflow-visible"
-          style={{ left: -13, top: 2745, width: 226, height: 176 }}>
+        {/* story-25 lily clusters */}
+        <div className="absolute pointer-events-none overflow-visible" style={{ left: -13, top: 2745, width: 226, height: 176 }}>
           <div style={{ transform: "rotate(108.12deg) scaleY(-1)" }}>
             <div className="overflow-hidden" style={{ width: 120, height: 199 }}>
-              <img src="/images/story-25.webp" alt="" aria-hidden
-                className="absolute max-w-none"
+              <img src="/images/story-25.webp" alt="" aria-hidden className="absolute max-w-none"
                 style={{ height: "220.23%", left: "-16.39%", width: "283.14%" }} />
             </div>
           </div>
         </div>
-        <div className="absolute pointer-events-none overflow-visible"
-          style={{ left: 168, top: 2749, width: 227, height: 157 }}>
+        <div className="absolute pointer-events-none overflow-visible" style={{ left: 168, top: 2749, width: 227, height: 157 }}>
           <div style={{ transform: "rotate(79.42deg)" }}>
             <div className="overflow-hidden" style={{ width: 121, height: 209 }}>
-              <img src="/images/story-25.webp" alt="" aria-hidden
-                className="absolute max-w-none"
+              <img src="/images/story-25.webp" alt="" aria-hidden className="absolute max-w-none"
                 style={{ height: "212.53%", left: "-16.39%", width: "283.14%" }} />
             </div>
           </div>
         </div>
-        <div className="absolute pointer-events-none overflow-visible"
-          style={{ left: -98, top: 2695, width: 330, height: 227 }}>
+        <div className="absolute pointer-events-none overflow-visible" style={{ left: -98, top: 2695, width: 330, height: 227 }}>
           <div style={{ transform: "rotate(106.7deg)" }}>
             <div className="overflow-hidden" style={{ width: 146, height: 301 }}>
-              <img src="/images/story-25.webp" alt="" aria-hidden
-                className="absolute max-w-none"
+              <img src="/images/story-25.webp" alt="" aria-hidden className="absolute max-w-none"
                 style={{ height: "143.2%", left: "-13.18%", width: "227.73%" }} />
             </div>
           </div>
         </div>
-
-        {/* story-26 bottom foliage */}
-        <div className="absolute pointer-events-none overflow-visible"
-          style={{ left: 169, top: 2715, width: 254, height: 203 }}>
+        {/* story-26 bottom foliage (174.91deg) — Figma node 189:1249 sits at the right edge
+              (x≈407), not center; the working tree had it at left:169 which tangled the ribbon. */}
+        <div className="absolute pointer-events-none overflow-visible" style={{ left: 407, top: 2715, width: 254, height: 203 }}>
           <div style={{ transform: "rotate(174.91deg) scaleY(-1)" }}>
             <div className="overflow-hidden" style={{ width: 239, height: 183 }}>
-              <img src="/images/story-26.webp" alt="" aria-hidden
-                className="absolute max-w-none"
+              <img src="/images/story-26.webp" alt="" aria-hidden className="absolute max-w-none"
                 style={{ height: "158.09%", left: "-105.56%", top: "-13.17%", width: "215.17%" }} />
             </div>
           </div>
         </div>
 
-        {/* story-25 final cluster */}
-        <div className="absolute pointer-events-none overflow-visible"
-          style={{ left: 231, top: 2797, width: 186, height: 145 }}>
+        {/* story-25 final cluster (88.03deg) */}
+        <div className="absolute pointer-events-none overflow-visible" style={{ left: 231, top: 2797, width: 186, height: 145 }}>
           <div style={{ transform: "rotate(88.03deg) scaleY(-1)" }}>
             <div className="overflow-hidden" style={{ width: 139, height: 181 }}>
-              <img src="/images/story-25.webp" alt="" aria-hidden
-                className="absolute max-w-none"
+              <img src="/images/story-25.webp" alt="" aria-hidden className="absolute max-w-none"
                 style={{ height: "194.29%", left: "-11.62%", top: "1.44%", width: "196.43%" }} />
             </div>
           </div>
+        </div>
+
+        {/* ── STORY TEXT (Figma nodes 189:1240 / 189:1241) — two staggered columns
+              that weave around the photo cluster; rendered last so the words stay
+              legible above the collage. Block 1 left-aligned, block 2 right-aligned. ── */}
+        {/* Left column — bold opening (Figma 189:1240, x51 y2135 w155) */}
+        <div className="absolute font-serif text-[14px] leading-snug text-[#2e3e09]"
+          style={{ left: 51, top: 2135, width: 155 }}>
+          <p className="font-bold">Who would&apos;ve thought a random food trip would lead to forever?</p>
+          <p className="mt-3">Although Carlo and Trixia came from the same school in Palompon, Leyte, they didn&apos;t meet until 2019, when their friend invited Carlo to join a Binondo food trip at&nbsp;Wai&nbsp;Ying.</p>
+        </div>
+        {/* Right column — closing (Figma 189:1241, x184 y2446 w156, right-aligned) */}
+        <div className="absolute font-serif text-[14px] leading-snug text-[#2e3e09] text-right"
+          style={{ left: 184, top: 2424, width: 156 }}>
+          <p>One simple invitation turned into more food adventures, Feast Sundays, and countless moments that slowly became something special.</p>
+          <p className="mt-3">The rest, as they say, is history, and now they&apos;re excited to start their greatest adventure yet, with all of you by&nbsp;their&nbsp;side.</p>
         </div>
       </section>
 
       {/* ============ COUNTDOWN + DETAILS ============ */}
       <section id="schedule" className="absolute left-0 top-0 w-[402px] text-center">
+        {/* Soft clouds behind the countdown + details text (legibility on the misty bg).
+            Scaled wrappers so the fixed-pixel .cloud gradients shrink to mobile. */}
+        <div className="absolute left-0 top-0 pointer-events-none" style={{ transform: "scale(0.32)", transformOrigin: "top left", left: -23, top: 2885 }}>
+          <div className="cloud cloud-c cloud-r-slow" style={{ opacity: 0.5 }} /></div>
+        <div className="absolute left-0 top-0 pointer-events-none" style={{ transform: "scale(0.32)", transformOrigin: "top left", left: 120, top: 2960 }}>
+          <div className="cloud cloud-a cloud-l-med" style={{ opacity: 0.45 }} /></div>
+        <div className="absolute left-0 top-0 pointer-events-none" style={{ transform: "scale(0.32)", transformOrigin: "top left", left: -45, top: 3360 }}>
+          <div className="cloud cloud-e cloud-bob-1" style={{ opacity: 0.5 }} /></div>
+        <div className="absolute left-0 top-0 pointer-events-none" style={{ transform: "scale(0.32)", transformOrigin: "top left", left: 150, top: 3440 }}>
+          <div className="cloud cloud-b cloud-r-med" style={{ opacity: 0.45 }} /></div>
+        <div className="absolute left-0 top-0 pointer-events-none" style={{ transform: "scale(0.32)", transformOrigin: "top left", left: -45, top: 3820 }}>
+          <div className="cloud cloud-e cloud-l-slow" style={{ opacity: 0.5 }} /></div>
+        <div className="absolute left-0 top-0 pointer-events-none" style={{ transform: "scale(0.32)", transformOrigin: "top left", left: 120, top: 3910 }}>
+          <div className="cloud cloud-a cloud-bob-2" style={{ opacity: 0.45 }} /></div>
+
+        {/* Glassmorphism card behind the countdown + script (frosts the misty bg) */}
+        <div
+          className="absolute left-[201px] -translate-x-1/2 pointer-events-none"
+          style={{
+            top: 2900,
+            width: 348,
+            height: 168,
+            borderRadius: 26,
+            background: "rgba(255,255,255,0.22)",
+            backdropFilter: "blur(14px)",
+            WebkitBackdropFilter: "blur(14px)",
+            border: "1px solid rgba(255,255,255,0.45)",
+            boxShadow: "0 8px 32px rgba(46,62,9,0.10)",
+          }}
+        />
         <MobileCountdown />
-        <h2 className="absolute left-[201px] top-[2961px] w-[402px] -translate-x-1/2 -translate-y-1/2 font-script text-[46px] leading-none text-[#2e3e09]">Until We Say &ldquo;I Do&rdquo;</h2>
-        <h3 className="absolute left-[201px] top-[3100px] w-[336px] -translate-x-1/2 font-serif text-[18px] leading-none text-[#73855e]">DETAILS</h3>
-        <p className="absolute left-[201px] top-[3129px] w-[302px] -translate-x-1/2 font-serif text-[13px] uppercase tracking-[0.15em] text-[#73855e]">Saturday 28 November 2026</p>
+        <h2 className="absolute left-[201px] top-[3034px] w-[402px] -translate-x-1/2 -translate-y-1/2 font-script text-[42px] leading-none text-[#2e3e09]">Until We Say &ldquo;I Do&rdquo;</h2>
+        <h3 className="absolute left-[201px] top-[3100px] w-[336px] -translate-x-1/2 font-serif text-[25px] leading-none text-[#73855e]">DETAILS</h3>
+        <p className="absolute left-[201px] top-[3129px] w-[302px] -translate-x-1/2 font-serif text-[15px] uppercase tracking-[0.15em] text-[#73855e]">Saturday 28 November 2026</p>
 
         {/* Ceremony card */}
         <Image src="/images/venue-chapel.webp" alt="Chapel of San Pedro Calungsod" width={303} height={222}
           className="absolute left-[49px] top-[3160px] h-[222px] w-[303px] rounded-[10px] object-cover" />
         <div className="absolute left-[50px] top-[3408px] w-[302px] font-serif text-[#2e3e09] text-center">
           <p className="font-script text-[28px] leading-tight">The Wedding Day</p>
-          <p className="text-[18px] leading-tight text-white">Ceremony &middot; 2PM</p>
-          <p className="text-[18px] font-bold leading-tight text-white">Chapel of San Pedro Calungsod</p>
-          <p className="mt-1 text-[14px] leading-snug text-white">Join us as we exchange vows and begin our forever surrounded by the love of family and friends.</p>
+          <p className="text-[18px] leading-tight">Ceremony &middot; 2PM</p>
+          <p className="text-[18px] font-bold leading-tight">Chapel of San Pedro Calungsod</p>
+          <p className="mt-1 text-[14px] leading-snug">Join us as we exchange vows and begin our forever surrounded by the love of family and friends.</p>
         </div>
         <MapBtn href={maps("Chapel of San Pedro Calungsod Cebu")} label="Google Maps" left={72} top={3569} width={105} />
         <MapBtn href={gcal("Carlo & Trixia — Ceremony", "20261128T060000Z", "20261128T073000Z", "Chapel of San Pedro Calungsod, Cebu")} label="Add to Calendar" left={189} top={3569} width={141} />
@@ -250,13 +313,30 @@ export default function MobileLanding() {
           className="absolute left-[50px] top-[3627px] h-[213px] w-[303px] rounded-[10px] object-cover" />
         <div className="absolute left-[50px] top-[3873px] w-[302px] font-serif text-[#2e3e09] text-center">
           <p className="font-script text-[28px] leading-tight">Reception &amp; Revelry</p>
-          <p className="text-[18px] leading-tight text-white">Celebration &middot; 4PM onwards</p>
-          <p className="text-[18px] font-bold leading-tight text-white">Bai Hotel Cebu</p>
-          <p className="mt-1 text-[14px] leading-snug text-white">From heartfelt toasts to joyful moments on the dance floor, we look forward to sharing this special occasion with you long into the night.</p>
+          <p className="text-[18px] leading-tight">Celebration &middot; 4PM onwards</p>
+          <p className="text-[18px] font-bold leading-tight">Bai Hotel Cebu</p>
+          <p className="mt-1 text-[14px] leading-snug">From heartfelt toasts to joyful moments on the dance floor, we look forward to sharing this special occasion with you long into the night.</p>
         </div>
         <MapBtn href={maps("Bai Hotel Cebu")} label="Google Maps" left={74} top={4032} width={105} />
         <MapBtn href={gcal("Carlo & Trixia — Reception", "20261128T080000Z", "20261128T140000Z", "Bai Hotel Cebu")} label="Add to Calendar" left={191} top={4032} width={141} />
       </section>
+
+      {/* ============ ANIMATED CLOUDS — behind Dress Code, up to "For Ladies" ============
+          The .cloud gradients are fixed-pixel, so each is wrapped in a scale() container
+          (transform-origin top-left) to shrink it to mobile; the inner div keeps its drift
+          animation. These sit on the dark-forest bg and behind the dress-code text. */}
+      <div className="absolute left-0 top-0 pointer-events-none" style={{ transform: "scale(0.32)", transformOrigin: "top left", left: -24, top: 4081 }}>
+        <div className="cloud cloud-c cloud-r-slow" style={{ opacity: 0.55 }} /></div>
+      <div className="absolute left-0 top-0 pointer-events-none" style={{ transform: "scale(0.32)", transformOrigin: "top left", left: -47, top: 4237 }}>
+        <div className="cloud cloud-a cloud-l-med" style={{ opacity: 0.5 }} /></div>
+      <div className="absolute left-0 top-0 pointer-events-none" style={{ transform: "scale(0.32)", transformOrigin: "top left", left: 154, top: 4271 }}>
+        <div className="cloud cloud-b cloud-bob-1" style={{ opacity: 0.52 }} /></div>
+      <div className="absolute left-0 top-0 pointer-events-none" style={{ transform: "scale(0.32)", transformOrigin: "top left", left: -86, top: 4366 }}>
+        <div className="cloud cloud-e cloud-r-med" style={{ opacity: 0.5 }} /></div>
+      <div className="absolute left-0 top-0 pointer-events-none" style={{ transform: "scale(0.32)", transformOrigin: "top left", left: 133, top: 4437 }}>
+        <div className="cloud cloud-a cloud-l-slow" style={{ opacity: 0.48 }} /></div>
+      <div className="absolute left-0 top-0 pointer-events-none" style={{ transform: "scale(0.32)", transformOrigin: "top left", left: -24, top: 4501 }}>
+        <div className="cloud cloud-c cloud-bob-2" style={{ opacity: 0.45 }} /></div>
 
       {/* ============ DRESS CODE ============ */}
       <section id="dress-code" className="absolute left-0 top-0 w-[402px] text-center text-[#2e3e09]">
@@ -280,13 +360,14 @@ export default function MobileLanding() {
       </section>
 
       {/* ============ GUEST ACCOMMODATION ============ */}
-      <section className="absolute pointer-events-none" style={{ left: -14, top: 4512, width: 433, height: 610 }}>
-        <img src="/images/guest-card.webp" alt="Guest accommodation information" aria-hidden
-          className="absolute inset-0 h-full w-full object-cover" />
-      </section>
+      {/* Full-margin card art (same asset/scale as the Gifts card, both 2906×4096)
+          so the lace edges aren't clipped like the tight-cropped guest-card.webp. */}
+      <img src="/images/faq-floral.webp" alt="Guest accommodation information" aria-hidden
+        className="absolute pointer-events-none max-w-none"
+        style={{ left: -22, top: 4560, width: 446 }} />
 
       {/* ============ GIFTS ============ */}
-      <section className="absolute overflow-hidden pointer-events-none" style={{ left: -52, top: 5016, width: 488, height: 501 }}>
+      <section className="absolute overflow-hidden pointer-events-none" style={{ left: -52, top: 5116, width: 488, height: 501 }}>
         <img src="/images/section-gifts.webp" alt="Gifts information" aria-hidden
           className="absolute max-w-none"
           style={{ height: "137.22%", left: "0", top: "-13.44%", width: "100%" }} />
@@ -295,7 +376,7 @@ export default function MobileLanding() {
       {/* ============ FAQ ============ */}
       {/* Decorative lace border (torn-paper top edge, flipped) */}
       <div className="absolute flex h-[80px] items-center justify-center pointer-events-none"
-        style={{ left: -28, top: 5512, width: 459 }}>
+        style={{ left: -28, top: 5612, width: 459 }}>
         <div style={{ transform: "rotate(180deg)" }}>
           <div className="h-[80px] w-[459px] overflow-hidden">
             <img src="/images/faq-lace.webp" alt="" aria-hidden
@@ -305,9 +386,9 @@ export default function MobileLanding() {
         </div>
       </div>
 
-      <section id="faq" className="absolute left-0 top-[5589px] h-[873px] w-[402px] bg-[#ebebeb] text-center">
-        <h2 className="absolute left-[201px] top-[5825px] w-[302px] -translate-x-1/2 -translate-y-1/2 font-faq text-[38px] font-bold leading-none text-black">Frequently Asked Questions</h2>
-        <div className="absolute left-[50px] top-[5863px] w-[302px] text-black">
+      <section id="faq" className="absolute left-0 top-[5689px] h-[873px] w-[402px] bg-[#ebebeb] text-center">
+        <h2 className="absolute left-[201px] top-[110px] w-[302px] -translate-x-1/2 -translate-y-1/2 font-faq text-[38px] font-bold leading-none text-black">Frequently Asked Questions</h2>
+        <div className="absolute left-[50px] top-[148px] w-[302px] text-black">
           {[
             { q: "By when should I respond?", a: "Kindly send your response by September 30, 2026. This helps us finalize seating and catering, so we'd be so grateful for an early reply." },
             { q: "Can I bring my kids or a plus?", a: "Plus-ones are by invitation only. Please check your invitation, if a guest is included, their name will be listed alongside yours. While we adore your little ones, we've planned an adults-focused celebration. Children who are named on the invitation are warmly welcome." },
@@ -326,10 +407,10 @@ export default function MobileLanding() {
       </section>
 
       {/* ============ FOOTER ============ */}
-      <footer id="rsvp" className="absolute left-0 top-[6462px] h-[857px] w-[402px]">
+      <footer id="rsvp" className="absolute left-0 top-[6562px] h-[857px] w-[402px]">
         {/* Boat / couple photo background */}
         <img src="/images/footer-boat.webp" alt="Carlo and Trixia in a boat on the lake"
-          className="absolute inset-0 h-full w-full object-cover" />
+          className="absolute inset-0 h-full w-full object-cover object-bottom" />
 
         {/* Lily arrangement — decorative overlay, slightly rotated */}
         <div className="absolute overflow-hidden pointer-events-none"
@@ -341,20 +422,26 @@ export default function MobileLanding() {
         </div>
 
         {/* Envelope */}
-        <img src="/images/footer-envelope.webp" alt="" aria-hidden
-          className="absolute left-[0px] top-[-141px] h-[373px] w-[387px] object-contain" />
+        <div className="absolute pointer-events-none" style={{ left: 0, top: -180, width: 354, height: 268, transform: "rotate(-3.12deg) scale(0.88)", transformOrigin: "center" }}>
+          <div className="overflow-hidden" style={{ width: 341, height: 250 }}>
+            <img src="/images/footer-envelope.webp" alt="" aria-hidden
+              className="absolute max-w-none"
+              style={{ height: "100%", left: "0", top: "0", width: "130.42%" }} />
+          </div>
+        </div>
 
         {/* Lace "Kindly Respond" card */}
-        <div className="absolute left-[65px] top-[37px] h-[258px] w-[328px] overflow-hidden">
+        <div className="absolute left-[51px] top-[0px] h-[258px] w-[328px] overflow-hidden" style={{ transform: "scale(1.08)", transformOrigin: "center" }}>
           <img src="/images/footer-card.webp" alt="" aria-hidden
-            className="absolute left-1/2 top-1/2 h-[150%] w-[160%] max-w-none -translate-x-1/2 -translate-y-1/2" />
+            className="absolute max-w-none"
+            style={{ height: "133.12%", left: "-40.93%", top: "-24.05%", width: "186.27%" }} />
         </div>
 
         {/* RSVP button */}
         <Link
           href="/rsvp"
           className="absolute flex h-[35px] w-[84px] items-center justify-center rounded-[8px] bg-[#7d9176] font-serif text-[14px] text-white"
-          style={{ left: "188px", top: "190px", transform: "rotate(7.44deg)" }}
+          style={{ left: "172px", top: "168px", transform: "rotate(7.44deg) scale(1.08)", transformOrigin: "center" }}
         >
           RSVP
         </Link>

@@ -106,8 +106,8 @@ export default function MobileRsvp() {
   }
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
-      <Image src="/images/rsvp-forest.webp" alt="" aria-hidden fill priority className="object-cover" />
+    <div className="relative min-h-screen w-screen overflow-hidden">
+      <Image src="/images/rsvp-forest.webp" alt="" aria-hidden fill priority className="object-cover" sizes="100vw" />
       <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/50 to-transparent" />
 
       <div className="relative px-5 pb-16 pt-6 text-center">

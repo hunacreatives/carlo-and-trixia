@@ -27,6 +27,8 @@ export default function HeroFull() {
 
   useEffect(() => {
     const play = () => videoRef.current?.play().catch(() => {});
+    // The intro overlay always shows and dispatches "intro:opened" on click,
+    // which starts hero playback.
     window.addEventListener("intro:opened", play, { once: true });
     return () => window.removeEventListener("intro:opened", play);
   }, []);
@@ -49,8 +51,8 @@ export default function HeroFull() {
         playsInline
         poster="/images/hero-poster.webp"
       >
-        <source src="/video/hero.webm" type="video/webm" />
-        <source src="/video/hero.mp4" type="video/mp4" />
+        <source src="/video/hero.webm?v=2" type="video/webm" />
+        <source src="/video/hero.mp4?v=2" type="video/mp4" />
       </video>
 
       {/* Top scrim for nav legibility */}

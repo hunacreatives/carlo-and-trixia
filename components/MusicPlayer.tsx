@@ -10,6 +10,14 @@ export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+
+  // Touch devices have no real hover — :hover sticks after a tap, which made the
+  // card show without the user hovering. On touch we switch to tap-to-toggle.
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    setIsTouch(window.matchMedia("(hover: none)").matches);
+  }, []);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -40,8 +48,8 @@ export default function MusicPlayer() {
       {/* Outer wrapper — flex-col so tooltip + record are one continuous hover area, no gap */}
       <div
         style={{ position: "fixed", bottom: 28, right: 28, zIndex: 9999, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 10 }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseEnter={isTouch ? undefined : () => setHovered(true)}
+        onMouseLeave={isTouch ? undefined : () => setHovered(false)}
       >
         {/* Tooltip card */}
         <div style={{
@@ -97,6 +105,28 @@ export default function MusicPlayer() {
 
           {/* Divider */}
           <div style={{ height: 1, background: "rgba(255,255,255,0.08)", marginBottom: 14 }} />
+
+          {/* Play/pause — touch only (on desktop the vinyl itself toggles playback) */}
+          {isTouch && (
+            <button
+              onClick={toggle}
+              aria-label={playing ? "Pause" : "Play"}
+              style={{
+                width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7,
+                background: "rgba(255,255,255,0.1)", color: "#f4f3f1", border: "1px solid rgba(255,255,255,0.14)",
+                borderRadius: 99, padding: "9px 0", fontSize: 12, fontWeight: 600,
+                fontFamily: "var(--font-sans), sans-serif", letterSpacing: "0.04em",
+                marginBottom: 12, cursor: "pointer",
+              }}
+            >
+              {playing ? (
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="currentColor"><rect x="3" y="2" width="3" height="10" rx="1"/><rect x="8" y="2" width="3" height="10" rx="1"/></svg>
+              ) : (
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="currentColor"><path d="M3 2l9 5-9 5V2z"/></svg>
+              )}
+              {playing ? "Pause" : "Play"}
+            </button>
+          )}
 
           {/* Stream buttons */}
           <div style={{ display: "flex", gap: 8 }}>
@@ -155,16 +185,16 @@ export default function MusicPlayer() {
 
           {/* Vinyl */}
           <button
-            onClick={toggle}
-            aria-label={playing ? "Pause" : "Play"}
+            onClick={isTouch ? () => setHovered(h => !h) : toggle}
+            aria-label={isTouch ? (hovered ? "Close music player" : "Open music player") : (playing ? "Pause" : "Play")}
             style={{
               background: "none", border: "none", cursor: "pointer", padding: 0,
               position: "relative", borderRadius: "50%",
               filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.35))",
               transition: "transform 0.2s ease, filter 0.2s ease",
             }}
-            onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.1)"; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; }}
+            onMouseEnter={isTouch ? undefined : e => { e.currentTarget.style.transform = "scale(1.1)"; }}
+            onMouseLeave={isTouch ? undefined : e => { e.currentTarget.style.transform = "scale(1)"; }}
           >
             <img
               src="/images/record.webp"

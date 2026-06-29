@@ -1,19 +1,18 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const KEY = "intro-opened";
-const markOpened = () => sessionStorage.setItem(KEY, "1");
-
 export default function IntroLetter() {
   const [phase, setPhase] = useState<"idle" | "opening" | "done">("idle");
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem(KEY) === "1") setPhase("done");
+    // Intro shows on every launch — no session skip (mobile browsers restore
+    // sessionStorage on tab reopen, which was bypassing the click-to-open step).
+    setIsMobile(window.matchMedia("(max-width: 767px)").matches);
   }, []);
 
   const open = () => {
     if (phase !== "idle") return;
-    markOpened();
     setPhase("opening");
     window.dispatchEvent(new Event("music:start"));
     window.dispatchEvent(new Event("intro:opened"));
@@ -36,38 +35,70 @@ export default function IntroLetter() {
         perspectiveOrigin: "50% 50%",
       }}
     >
-      {/* Left panel — shows left half of the image */}
+      {/* First panel — desktop: left half (left/right split). mobile: top half (top/bottom stack) */}
       <div
-        style={{
-          position: "absolute",
-          top: 0, left: 0,
-          width: "50%", height: "100%",
-          backgroundImage: "url(/images/intro-letter-bg.webp)",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100vw auto",
-          backgroundPosition: "0px center",
-          backgroundColor: "#e3ddd5",
-          transformOrigin: "0% 50%",
-          transform: isOpening ? "rotateY(-90deg)" : "rotateY(0deg)",
-          transition: isOpening ? "transform 0.7s cubic-bezier(0.4,0,1,1)" : "none",
-        }}
+        style={
+          isMobile
+            ? {
+                position: "absolute",
+                top: 0, left: 0,
+                width: "100%", height: "50%",
+                backgroundImage: "url(/images/intro-letter-bg.webp)",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "200vw auto",
+                backgroundPosition: "0% center",
+                backgroundColor: "#e3ddd5",
+                transformOrigin: "50% 0%",
+                transform: isOpening ? "rotateX(90deg)" : "rotateX(0deg)",
+                transition: isOpening ? "transform 0.7s cubic-bezier(0.4,0,1,1)" : "none",
+              }
+            : {
+                position: "absolute",
+                top: 0, left: 0,
+                width: "50%", height: "100%",
+                backgroundImage: "url(/images/intro-letter-bg.webp)",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "100vw auto",
+                backgroundPosition: "0px center",
+                backgroundColor: "#e3ddd5",
+                transformOrigin: "0% 50%",
+                transform: isOpening ? "rotateY(-90deg)" : "rotateY(0deg)",
+                transition: isOpening ? "transform 0.7s cubic-bezier(0.4,0,1,1)" : "none",
+              }
+        }
       />
 
-      {/* Right panel — background offset -50vw so it shows the right half of the same image */}
+      {/* Second panel — desktop: right half. mobile: bottom half */}
       <div
-        style={{
-          position: "absolute",
-          top: 0, right: 0,
-          width: "50%", height: "100%",
-          backgroundImage: "url(/images/intro-letter-bg.webp)",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100vw auto",
-          backgroundPosition: "-50vw center",
-          backgroundColor: "#e3ddd5",
-          transformOrigin: "100% 50%",
-          transform: isOpening ? "rotateY(90deg)" : "rotateY(0deg)",
-          transition: isOpening ? "transform 0.7s cubic-bezier(0.4,0,1,1)" : "none",
-        }}
+        style={
+          isMobile
+            ? {
+                position: "absolute",
+                bottom: 0, left: 0,
+                width: "100%", height: "50%",
+                backgroundImage: "url(/images/intro-letter-bg.webp)",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "200vw auto",
+                backgroundPosition: "100% center",
+                backgroundColor: "#e3ddd5",
+                transformOrigin: "50% 100%",
+                transform: isOpening ? "rotateX(-90deg)" : "rotateX(0deg)",
+                transition: isOpening ? "transform 0.7s cubic-bezier(0.4,0,1,1)" : "none",
+              }
+            : {
+                position: "absolute",
+                top: 0, right: 0,
+                width: "50%", height: "100%",
+                backgroundImage: "url(/images/intro-letter-bg.webp)",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "100vw auto",
+                backgroundPosition: "-50vw center",
+                backgroundColor: "#e3ddd5",
+                transformOrigin: "100% 50%",
+                transform: isOpening ? "rotateY(90deg)" : "rotateY(0deg)",
+                transition: isOpening ? "transform 0.7s cubic-bezier(0.4,0,1,1)" : "none",
+              }
+        }
       />
 
       {/* Wax seal centered on the fold line */}

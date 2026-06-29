@@ -27,7 +27,7 @@ export default function Home() {
       >
         <DesktopLanding />
       </div>
-      <div className="show-mobile">
+      <div className="show-mobile" style={{ overflowX: "hidden" }}>
         <MobileLanding />
       </div>
     </main>
