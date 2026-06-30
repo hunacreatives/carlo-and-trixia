@@ -76,9 +76,9 @@ export default function MobileLanding() {
           <img src="/images/story-21.webp" alt="" aria-hidden className="absolute max-w-none"
             style={{ height: "268.13%", left: "-0.06%", top: 0, width: "296.25%" }} />
         </div>
-        {/* Right arch corner (mirrored) — Figma: left=246, top=1791 */}
+        {/* Right arch corner (mirrored) — Figma: left=246, top=1791; nudged up a bit */}
         <div className="absolute flex items-center justify-center pointer-events-none"
-          style={{ left: 246, top: 1791, width: 171, height: 245, zIndex: 10 }}>
+          style={{ left: 246, top: 1755, width: 171, height: 245, zIndex: 10 }}>
           <div style={{ transform: "rotate(180deg) scaleY(-1)" }}>
             <div className="overflow-hidden" style={{ width: 171, height: 245 }}>
               <img src="/images/story-21.webp" alt="" aria-hidden className="absolute max-w-none"

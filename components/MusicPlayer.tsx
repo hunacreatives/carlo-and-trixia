@@ -11,6 +11,15 @@ export default function MusicPlayer() {
   const [playing, setPlaying] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+
+  // Hide the player while the mobile nav drawer is open so it never sits on top
+  // of (and blocks taps on) the nav links.
+  useEffect(() => {
+    const onNav = (e: Event) => setNavOpen(Boolean((e as CustomEvent).detail));
+    window.addEventListener("nav-menu", onNav);
+    return () => window.removeEventListener("nav-menu", onNav);
+  }, []);
 
   // Touch devices have no real hover — :hover sticks after a tap, which made the
   // card show without the user hovering. On touch we switch to tap-to-toggle.
@@ -41,18 +50,28 @@ export default function MusicPlayer() {
     else { audio.play().then(() => setPlaying(true)).catch(() => {}); }
   };
 
+  // Tooltip card opens only when the vinyl icon (or the card itself) is hovered.
+  // A short close delay lets the cursor travel from the icon onto the card.
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openCard = () => { if (closeTimer.current) clearTimeout(closeTimer.current); setHovered(true); };
+  const scheduleClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setHovered(false), 140);
+  };
+
   return (
     <>
       <audio ref={audioRef} src="/music/turning-page.mp3" loop preload="auto" />
 
       {/* Outer wrapper — flex-col so tooltip + record are one continuous hover area, no gap */}
       <div
-        style={{ position: "fixed", bottom: 28, right: 28, zIndex: 9999, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 10 }}
-        onMouseEnter={isTouch ? undefined : () => setHovered(true)}
-        onMouseLeave={isTouch ? undefined : () => setHovered(false)}
+        style={{ position: "fixed", bottom: 28, right: 28, zIndex: 9999, display: navOpen ? "none" : "flex", flexDirection: "column", alignItems: "flex-end", gap: 10, pointerEvents: "none" }}
       >
         {/* Tooltip card */}
-        <div style={{
+        <div
+          onMouseEnter={isTouch ? undefined : openCard}
+          onMouseLeave={isTouch ? undefined : scheduleClose}
+          style={{
           width: 230,
           background: "rgba(20, 27, 15, 0.55)",
           backdropFilter: "blur(24px)",
@@ -167,7 +186,7 @@ export default function MusicPlayer() {
         </div>
 
         {/* Equalizer + vinyl row */}
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, pointerEvents: "auto" }}>
           {/* 3 bars — hidden while tooltip is open */}
           {!hovered && (
             <div style={{ display: "flex", alignItems: "flex-end", gap: 4, height: 24 }}>
@@ -193,8 +212,8 @@ export default function MusicPlayer() {
               filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.35))",
               transition: "transform 0.2s ease, filter 0.2s ease",
             }}
-            onMouseEnter={isTouch ? undefined : e => { e.currentTarget.style.transform = "scale(1.1)"; }}
-            onMouseLeave={isTouch ? undefined : e => { e.currentTarget.style.transform = "scale(1)"; }}
+            onMouseEnter={isTouch ? undefined : e => { e.currentTarget.style.transform = "scale(1.1)"; openCard(); }}
+            onMouseLeave={isTouch ? undefined : e => { e.currentTarget.style.transform = "scale(1)"; scheduleClose(); }}
           >
             <img
               src="/images/record.webp"

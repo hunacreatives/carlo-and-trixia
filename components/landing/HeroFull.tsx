@@ -33,9 +33,11 @@ export default function HeroFull() {
     return () => window.removeEventListener("intro:opened", play);
   }, []);
 
-  // Prevent body scroll when menu is open
+  // Prevent body scroll when menu is open, and let other fixed UI (e.g. the
+  // music player) know so it can get out of the way of the nav links.
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
+    window.dispatchEvent(new CustomEvent("nav-menu", { detail: menuOpen }));
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 

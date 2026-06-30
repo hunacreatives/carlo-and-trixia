@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import ConditionalMusicPlayer from "@/components/ConditionalMusicPlayer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const pinyon = Pinyon_Script({
   weight: "400",
@@ -75,6 +76,7 @@ export default function RootLayout({
       className={`${pinyon.variable} ${ballet.variable} ${lusitana.variable} ${jost.variable} ${tangerine.variable} ${marcellus.variable} antialiased`}
     >
       <body>
+        <ScrollToTop />
         {children}
         <ConditionalMusicPlayer />
       </body>
