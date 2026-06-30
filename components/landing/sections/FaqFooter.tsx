@@ -55,16 +55,20 @@ export default function FaqFooter() {
         ))}
       </div>
 
-      {/* ---- Footer boat image — full-bleed, outside the content footer so child positions aren't affected ---- */}
+      {/* ---- Footer boat image — full-bleed, outside the content footer so child positions aren't affected.
+            The canvas caps at maxWidth 1280 (scale = 1280/1512). On viewports wider than 1280 the
+            capped canvas leaves gutters, so size/position the photo to the full viewport, compensating
+            for the canvas scale (1/0.846561 = 1.18125) so it stays edge-to-edge. ---- */}
+      <style>{`
+        .footer-boat-img { left: -137px; width: calc(100% + 274px); }
+        @media (min-width: 1280px) {
+          .footer-boat-img { left: calc(756px - 59.0625vw); width: 118.125vw; }
+        }
+      `}</style>
       <img
         src="/images/footer-boat.webp"
         alt="Carlo and Trixia in a boat on the lake"
-        className="absolute top-[8844px] max-w-none"
-        style={{
-          left: "-137px",
-          width: "calc(100% + 274px)",
-          height: "auto",
-        }}
+        className="footer-boat-img absolute top-[8844px] h-auto max-w-none"
       />
 
       {/* ---- Footer content: envelope, lace card, flower, RSVP (node 191:75) ---- */}
@@ -73,16 +77,19 @@ export default function FaqFooter() {
         className="absolute left-[-9px] top-[8844px] h-[2029px] w-[1530px]"
       >
 
-        {/* Envelope with lilies (node 191:76) — positioned over the lake */}
+        {/* Envelope with lilies (node 191:76) — positioned over the lake.
+            Shifted up ~230px from the original (top 394) so it clears the
+            couple's faces — at narrow desktop widths the full-bleed photo is
+            shorter and the couple sits higher. */}
         <img
           src="/images/footer-envelope.webp"
           alt=""
           aria-hidden
-          className="absolute left-[56px] top-[394px] h-[820px] w-[1025px] object-contain"
+          className="absolute left-[56px] top-[164px] h-[820px] w-[1025px] object-contain"
         />
 
         {/* Lace "Kindly Respond" card (node 191:165) */}
-        <div className="absolute left-[603px] top-[555px] h-[693px] w-[881px] overflow-hidden">
+        <div className="absolute left-[603px] top-[325px] h-[693px] w-[881px] overflow-hidden">
           <img
             src="/images/footer-card.webp"
             alt=""
@@ -92,7 +99,7 @@ export default function FaqFooter() {
         </div>
 
         {/* Lily flower arrangement (node 191:166) — overlaid across envelope + lace card */}
-        <div className="absolute overflow-hidden pointer-events-none" style={{ left: 290, top: 480, width: 600, height: 665, transformOrigin: "bottom center", animation: "flowerSway 5s ease-in-out infinite" }}>
+        <div className="absolute overflow-hidden pointer-events-none" style={{ left: 290, top: 250, width: 600, height: 665, transformOrigin: "bottom center", animation: "flowerSway 5s ease-in-out infinite" }}>
           <img
             src="/images/footer-flower.webp"
             alt=""
@@ -105,7 +112,7 @@ export default function FaqFooter() {
         {/* RSVP button (node 191:167) — overlaid on the lace card */}
         <Link
           href="/rsvp"
-          className="absolute left-[925px] top-[974px] flex h-[59px] w-[197px] rotate-[7.41deg] items-center justify-center rounded-[10px] bg-[#7d9176] font-serif text-[30px] text-white transition-opacity hover:opacity-90"
+          className="absolute left-[925px] top-[744px] flex h-[59px] w-[197px] rotate-[7.41deg] items-center justify-center rounded-[10px] bg-[#7d9176] font-serif text-[30px] text-white transition-opacity hover:opacity-90"
         >
           RSVP
         </Link>

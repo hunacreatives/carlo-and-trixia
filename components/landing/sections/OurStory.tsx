@@ -39,7 +39,7 @@ export default function OurStory() {
           </div>
         </div>
       </div>
-      <div className="breeze-3 absolute h-[1174px] top-[2860px] w-[927px]" style={{ left: -407 }}>
+      <div className="absolute h-[1174px] top-[2860px] w-[927px]" style={{ left: -407 }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
           <img alt="" className="absolute h-[110.89%] left-[-8.53%] max-w-none top-[-0.01%] w-[108.53%]" src={img23} />
         </div>
@@ -80,7 +80,7 @@ export default function OurStory() {
           </div>
         </div>
       </div>
-      <div className="breeze-3 absolute h-[1174px] left-[calc(57.14%+127px)] top-[2860px] w-[927px]">
+      <div className="absolute h-[1174px] left-[calc(57.14%+127px)] top-[2860px] w-[927px]">
         <div className="absolute inset-0 overflow-hidden pointer-events-none clipfix">
           <img alt="" className="absolute h-[110.89%] left-[-8.53%] max-w-none top-[-0.01%] w-[108.53%]" src={img23} />
         </div>

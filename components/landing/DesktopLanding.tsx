@@ -110,20 +110,14 @@ export default function DesktopLanding() {
         <Welcome />
         <OurStory />
         {/* Flowing silk ribbon draped across the top of Our Story (nodes 191:156 /
-            191:157) — two ribbons side by side, positioned above the lanterns. */}
+            191:157) — a single continuous ribbon spanning the canvas width at its
+            natural aspect (3.619), so the twists read uninterrupted with no mirror seam. */}
         <img
           src="/images/story-silk.webp"
           alt=""
           aria-hidden
           className="absolute top-[1775px] h-[430px] max-w-none object-fill"
-          style={{ left: "-800px", width: "1556px" }}
-        />
-        <img
-          src="/images/story-silk.webp"
-          alt=""
-          aria-hidden
-          className="absolute top-[1775px] h-[430px] max-w-none object-fill"
-          style={{ left: "756px", width: "1556px" }}
+          style={{ left: "-22px", width: "1556px" }}
         />
         <Details />
         <DressCode />

@@ -35,7 +35,9 @@ export default function IntroLetter() {
         perspectiveOrigin: "50% 50%",
       }}
     >
-      {/* First panel — desktop: left half (left/right split). mobile: top half (top/bottom stack) */}
+      {/* First panel — desktop: left half (left/right split). mobile: top half (top/bottom stack).
+          Each panel shows one full photo via background-size:cover so it fills its box
+          edge-to-edge at any aspect ratio (no top/bottom or side bars). */}
       <div
         style={
           isMobile
@@ -43,10 +45,10 @@ export default function IntroLetter() {
                 position: "absolute",
                 top: 0, left: 0,
                 width: "100%", height: "50%",
-                backgroundImage: "url(/images/intro-letter-bg.webp)",
+                backgroundImage: "url(/images/intro-left.webp)",
                 backgroundRepeat: "no-repeat",
-                backgroundSize: "200vw auto",
-                backgroundPosition: "0% center",
+                backgroundSize: "cover",
+                backgroundPosition: "center center",
                 backgroundColor: "#e3ddd5",
                 transformOrigin: "50% 0%",
                 transform: isOpening ? "rotateX(90deg)" : "rotateX(0deg)",
@@ -56,10 +58,10 @@ export default function IntroLetter() {
                 position: "absolute",
                 top: 0, left: 0,
                 width: "50%", height: "100%",
-                backgroundImage: "url(/images/intro-letter-bg.webp)",
+                backgroundImage: "url(/images/intro-left.webp)",
                 backgroundRepeat: "no-repeat",
-                backgroundSize: "100vw auto",
-                backgroundPosition: "0px center",
+                backgroundSize: "cover",
+                backgroundPosition: "center center",
                 backgroundColor: "#e3ddd5",
                 transformOrigin: "0% 50%",
                 transform: isOpening ? "rotateY(-90deg)" : "rotateY(0deg)",
@@ -76,10 +78,10 @@ export default function IntroLetter() {
                 position: "absolute",
                 bottom: 0, left: 0,
                 width: "100%", height: "50%",
-                backgroundImage: "url(/images/intro-letter-bg.webp)",
+                backgroundImage: "url(/images/intro-right.webp)",
                 backgroundRepeat: "no-repeat",
-                backgroundSize: "200vw auto",
-                backgroundPosition: "100% center",
+                backgroundSize: "cover",
+                backgroundPosition: "center center",
                 backgroundColor: "#e3ddd5",
                 transformOrigin: "50% 100%",
                 transform: isOpening ? "rotateX(-90deg)" : "rotateX(0deg)",
@@ -89,10 +91,10 @@ export default function IntroLetter() {
                 position: "absolute",
                 top: 0, right: 0,
                 width: "50%", height: "100%",
-                backgroundImage: "url(/images/intro-letter-bg.webp)",
+                backgroundImage: "url(/images/intro-right.webp)",
                 backgroundRepeat: "no-repeat",
-                backgroundSize: "100vw auto",
-                backgroundPosition: "-50vw center",
+                backgroundSize: "cover",
+                backgroundPosition: "center center",
                 backgroundColor: "#e3ddd5",
                 transformOrigin: "100% 50%",
                 transform: isOpening ? "rotateY(90deg)" : "rotateY(0deg)",

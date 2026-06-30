@@ -431,7 +431,7 @@ export default function MobileLanding() {
         </div>
 
         {/* Lace "Kindly Respond" card */}
-        <div className="absolute left-[51px] top-[0px] h-[258px] w-[328px] overflow-hidden" style={{ transform: "scale(1.08)", transformOrigin: "center" }}>
+        <div className="absolute left-[51px] top-[0px] h-[258px] w-[328px] overflow-hidden pointer-events-none" style={{ transform: "scale(1.08)", transformOrigin: "center" }}>
           <img src="/images/footer-card.webp" alt="" aria-hidden
             className="absolute max-w-none"
             style={{ height: "133.12%", left: "-40.93%", top: "-24.05%", width: "186.27%" }} />
@@ -440,7 +440,7 @@ export default function MobileLanding() {
         {/* RSVP button */}
         <Link
           href="/rsvp"
-          className="absolute flex h-[35px] w-[84px] items-center justify-center rounded-[8px] bg-[#7d9176] font-serif text-[14px] text-white"
+          className="absolute z-10 flex h-[35px] w-[84px] cursor-pointer items-center justify-center rounded-[8px] bg-[#7d9176] font-serif text-[14px] text-white"
           style={{ left: "172px", top: "168px", transform: "rotate(7.44deg) scale(1.08)", transformOrigin: "center" }}
         >
           RSVP
