@@ -2,6 +2,7 @@ import HeroFull from "@/components/landing/HeroFull";
 import DesktopLanding from "@/components/landing/DesktopLanding";
 import MobileLanding from "@/components/landing/MobileLanding";
 import IntroLetter from "@/components/IntroLetter";
+import MadeByBanner from "@/components/landing/MadeByBanner";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
       <div className="show-mobile" style={{ overflowX: "hidden" }}>
         <MobileLanding />
       </div>
+      <MadeByBanner />
     </main>
   );
 }
